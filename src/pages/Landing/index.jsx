@@ -1,9 +1,14 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom'
 import hero from '../../hero-img.png';
 import ButtonLg from '../../components/ButtonLg';
 import Regions from '../../components/Regions';
 
 const Landing = () => {
+    const navigate = useNavigate();
+    const handleSignInClick = () => {
+      navigate('/auth', { state: { showSignUp: true } });
+    }
   return (
     <>
         <div className=' mx-auto max-w-screen-xl flex my-12 justify-between'>
@@ -21,7 +26,7 @@ const Landing = () => {
                         that the Lebanese real estate market has to offer. Get started now and embark on your real estate journey through the  
                         boundless opportunities with limitless confidence. 
                 </p>
-                <ButtonLg buttonText='Sign Up'/>
+                <ButtonLg buttonText='Sign Up' onClick={handleSignInClick}/>
             </div>
         </div>
         <div className=' mx-auto max-w-screen-xl flex mb-24 mt-40 justify-between items-center'>

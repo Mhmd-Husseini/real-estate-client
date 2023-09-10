@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "../Input";
 import ButtonSm from "../ButtonSm";
 import { sendRequest } from "../../config/request";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const LoginForm = ({ onToggle }) => {
   const navigation = useNavigate();
@@ -40,9 +40,11 @@ const LoginForm = ({ onToggle }) => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-secondary">
-          Lebanon RealEstate Insights
-          </h2>
+          <Link to="/">
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-secondary">
+            Lebanon RealEstate Insights
+            </h2>
+          </Link>
         </div>
         <form className="mt-8 space-y-6" onSubmit={(e) => e.preventDefault()}>
           <Input label="Email" placeholder="Enter your email" type="email" value={credentials.email} onChange={(email) => setCredentials({ ...credentials, email })}/>

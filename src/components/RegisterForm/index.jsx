@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "../Input";
 import ButtonSm from "../ButtonSm";
 import { sendRequest } from "../../config/request";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const RegisterForm = ({ onToggle }) => {
   const navigation = useNavigate();
@@ -17,7 +17,6 @@ const RegisterForm = ({ onToggle }) => {
   const [error, setError] = useState(null);
 
   const validateEmail = (email) => {
-    // Regular expression to check if the email is valid
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
@@ -66,9 +65,11 @@ const RegisterForm = ({ onToggle }) => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-secondary">
+          <Link to="/">
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-secondary">
             Lebanon RealEstate Insights
-          </h2>
+            </h2>
+          </Link>
         </div>
         <form className="mt-8 space-y-6" onSubmit={(e) => e.preventDefault()}>
           <Input label="Name" placeholder="Enter your name" value={credentials.name} onChange={(name) => setCredentials({ ...credentials, name })} />
