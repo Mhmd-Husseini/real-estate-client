@@ -2,9 +2,9 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
-const ButtonSm = ({ buttonText }) => {
+const ButtonSm = ({ buttonText, onClick }) => {
   return (
-    <button className="text-neutral-800 py-4 font-semibold px-5 rounded-tr-2xl bg-primary hover:bg-secondary hover:text-white text-sm whitespace-pre-wrap">
+    <button onClick={() => onClick()} className="text-neutral-800 py-4 font-semibold px-5 rounded-tr-2xl bg-primary hover:bg-secondary hover:text-white text-sm whitespace-pre-wrap">
         {buttonText}   <FontAwesomeIcon icon={faArrowRight} />
     </button>
   )
