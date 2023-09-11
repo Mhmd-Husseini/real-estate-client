@@ -3,16 +3,13 @@ import Input from "../Input";
 import ButtonSm from "../ButtonSm";
 import { sendRequest } from "../../config/request";
 import { useNavigate, Link } from "react-router-dom";
+import { setToken } from '../../redux/authSlice';
+import { useDispatch } from 'react-redux';
 
 const RegisterForm = ({ onToggle }) => {
   const navigation = useNavigate();
-
-  const [credentials, setCredentials] = useState({
-    name: "",
-    email: "",
-    password: "",
-    phone: "",
-  });
+  const dispatch = useDispatch();
+  const [credentials, setCredentials] = useState({name: "", email: "", password: "", phone: "" });
 
   const [error, setError] = useState(null);
 
@@ -53,8 +50,7 @@ const RegisterForm = ({ onToggle }) => {
         body: credentials,
       });
 
-      localStorage.setItem("access_token", response.token);
-
+      dispatch(setToken(response.data.token));
       navigation("/");
     } catch (error) {
       console.log(error);

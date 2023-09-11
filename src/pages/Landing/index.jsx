@@ -3,9 +3,12 @@ import {useNavigate} from 'react-router-dom'
 import hero from '../../hero-img.png';
 import ButtonLg from '../../components/ButtonLg';
 import Regions from '../../components/Regions';
+import { useSelector } from 'react-redux';
 
 const Landing = () => {
     const navigate = useNavigate();
+    const token = useSelector((state) => state.auth.token);
+    console.log(token)
     const handleSignInClick = () => {
       navigate('/auth', { state: { showSignUp: true } });
     }
@@ -17,7 +20,7 @@ const Landing = () => {
                 <div className='w-36 h-2 bg-gradient-to-r from-primary to-black'>
                 </div>
                  <h1 className=' font-semibold text-4xl mb-1'>
-                     Lebanon RealEstate Insights 
+                     Lebanon RealEstate Insights {token}
                 </h1>
                 <p className='mb-10 text-xl font-medium text-justify leading-8 text-gray-500'>
                         Your gateway to the Lebanese real estate market. Whether you're looking to buy your dream property, sell your current one, 

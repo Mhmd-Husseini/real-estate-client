@@ -3,9 +3,12 @@ import Input from "../Input";
 import ButtonSm from "../ButtonSm";
 import { sendRequest } from "../../config/request";
 import { useNavigate, Link } from "react-router-dom";
+import { setToken } from '../../redux/authSlice';
+import { useDispatch } from 'react-redux';
 
 const LoginForm = ({ onToggle }) => {
   const navigation = useNavigate();
+  const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
 
@@ -27,8 +30,7 @@ const LoginForm = ({ onToggle }) => {
 
     try {
       const response = await sendRequest({ method: "POST", route: "guest/login", body: credentials });
-
-      localStorage.setItem("access_token", response.token);
+      dispatch(setToken(response.data.token));
       navigation("/");
     } catch (error) {
       console.log(error);
