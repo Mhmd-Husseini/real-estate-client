@@ -35,7 +35,7 @@ const Regions = () => {
   return (
     <div className="w-full flex flex-wrap justify-between">
       {visibleRegions.map((index) => (
-        <div key={regions[index].key} className="card w-[29%] h-[31rem] bg-gray-200 relative overflow-hidden">
+        <div key={regions[index].key} className="card w-[29%] h-[31rem] bg-gray-200 relative overflow-hidden transition-transform duration-500 ease-in-out transform hover:scale-110">
           <p className="text-center text-lg font-bold mt-2 text-secondary">{regions[index].name}</p>
           <img src={regions[index].image} className="w-full h-[100%] object-cover" alt={regions[index].name} />
         </div>
