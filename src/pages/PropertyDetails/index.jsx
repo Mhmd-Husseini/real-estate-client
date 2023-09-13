@@ -53,7 +53,7 @@ const PropertyDetails = () => {
         <div className="mt-4 flex">
           <img src={`data:image/jpeg;base64,${property[selectedImage]}`} alt={property.title} className="max-w-full h-auto flex-grow max-h-[28rem] object-cover"/>
         </div>
-        <div className="mt-4">
+        <div className="mt-5">
           <div className="flex justify-center items-center space-x-4 overflow-x-auto">
             <div onClick={() => navigateImage("left")} className="w-12 h-12 rounded-full bg-primary flex items-center justify-center cursor-pointer">
               <FontAwesomeIcon icon={faChevronLeft} className="text-white" />
@@ -85,7 +85,7 @@ const PropertyDetails = () => {
           <img className="full-width-img" src='https://docs.webix.com/media/desktop/calendar.png' alt="Calendar"/>
         </div>
         <div className="bg-primary p-6 flex flex-col gap-1.5 my-16 font-semibold text-gray-900 text-md">
-          <h1 className="text-2xl mb-2 font-bold ">Contact Information</h1>
+          <h1 className="text-2xl mb-2 font-bold">Contact Information</h1>
           <p>Name: {property.user.name}</p>
           <p>Phone: {property.user.phone}</p>
           <p>Email: {property.user.email}</p>
