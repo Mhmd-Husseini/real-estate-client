@@ -52,7 +52,19 @@ const Trends = () => {
       <div className="max-w-screen-lg mx-auto border-4 border-primary p-8">
         <canvas id="myChart" width={400} height={200}></canvas>
       </div>
-
+      <div className="article-list mt-8">
+        <ul>
+          {data.articles.map((article) => (
+            <li key={article.id}>
+              <h1 className='font-bold text-3xl mb-2 text-gray-800'>{article.title}</h1>
+              <div className='h-1 w-28 bg-gradient-to-r from-primary to-black mb-6'></div>
+              <p className='font-medium text-2xl text-primary'><strong className='text-gray-800'>by</strong> {article.author.name}</p>
+              <p className="text-md text-gray-500"> {new Date(article.created_at).toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric"})}</p>
+              <p>{article.content}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );  
 };
