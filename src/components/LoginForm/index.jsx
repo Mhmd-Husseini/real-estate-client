@@ -43,7 +43,7 @@ const LoginForm = ({ onToggle }) => {
       <div className="max-w-md w-full space-y-8">
         <div>
           <Link to="/">
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-secondary">
+            <h2 className="mt-6 mb-1 text-center text-3xl font-extrabold text-secondary">
             Lebanon RealEstate Insights
             </h2>
             <div className='w-36 h-1.5 bg-gradient-to-r from-primary to-black'>
