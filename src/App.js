@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import Landing from './pages/Landing';
 import Homes from './pages/Homes';
 import Lands from './pages/Lands';
+import Trends from './pages/Trends';
 import Authentication from './pages/Authentication';
 import PropertyDetails from './pages/PropertyDetails';
 
@@ -16,6 +17,7 @@ function App() {
         <Route path='houses' element={<Homes />} />
         <Route path='lands' element={<Lands />} />
         <Route path='property/:id' element={<PropertyDetails />} />
+        <Route path='trends' element={<Trends />} />
       </Route>
     </Routes>
   );
