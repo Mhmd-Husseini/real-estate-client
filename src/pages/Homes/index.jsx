@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropertyCard from '../../components/PropertyCard';
 import ButtonSearch from '../../components/ButtonSearch';
 import SearchDropDown from '../../components/SearchDropDown';
-import axios from 'axios';
+import { sendRequest } from "../../config/request";
 
 const Lands = () => {
   const maxprice = [{ label: "Any", value: 40000000000 }, { label: "$100K", value: 100000 }, { label: "$150K", value: 150000 }, { label: "$200K", value: 200000 }, { label: "$250K", value: 250000 }, { label: "$300K", value: 300000 }, { label: "$350K", value: 350000 }];
@@ -12,20 +12,17 @@ const Lands = () => {
   const [searchParams, setSearchParams] = useState({city_name: '', max_price: 40000000000, min_area: 0, type:"home" });
   const [properties, setProperties] = useState([]);
 
-  const fetchProperties = async () => {
-    try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/guest/properties`, {
-        params: searchParams,
-      });
-      setProperties(response.data.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
   useEffect(() => {
-    fetchProperties();
-  }, [searchParams]);
+    const fetchData = async () => {
+      try {
+        const response = await sendRequest({ method: "GET", route: "guest/properties", params: searchParams });
+        setProperties(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, [searchParams]); 
 
   return (
     <div className='mx-auto max-w-screen-xl'>
