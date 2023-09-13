@@ -5,6 +5,7 @@ axios.defaults.baseURL = "http://127.0.0.1:8000/api";
 export const sendRequest = async ({
   method = "GET",
   route,
+  params,
   body,
   includeHeaders = true,
 }) => {
@@ -19,6 +20,7 @@ export const sendRequest = async ({
       method,
       url: route,
       data: body,
+      params,
     });
 
     return response.data;
