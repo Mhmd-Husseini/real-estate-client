@@ -18,7 +18,7 @@ const Nav = () => {
           <Link to="/houses" className="text-secondary hover:text-primary text-lg font-bold hover:underline">Houses</Link>
           <Link to="/lands" className="text-secondary hover:text-primary text-lg font-bold hover:underline">Lands</Link>
           <Link to="/trends" className="text-secondary hover:text-primary text-lg font-bold hover:underline">Trends</Link>
-          <a href="#" className="text-secondary hover:text-primary text-lg font-bold hover:underline">Profile</a>
+          <a href="/dashboard" className="text-secondary hover:text-primary text-lg font-bold hover:underline">Dashboard</a>
         </div>
         <ButtonSm buttonText='Sign In' onClick={handleSignInClick} /> 
       </div>
