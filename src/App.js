@@ -7,6 +7,9 @@ import Lands from './pages/Lands';
 import Trends from './pages/Trends';
 import Authentication from './pages/Authentication';
 import PropertyDetails from './pages/PropertyDetails';
+import SideNav from './components/SideNav';
+import Profile from './pages/Profile';
+import AddProperty from './pages/AddProperty';
 
 function App() {
   return (
@@ -18,6 +21,10 @@ function App() {
         <Route path='lands' element={<Lands />} />
         <Route path='property/:id' element={<PropertyDetails />} />
         <Route path='trends' element={<Trends />} />
+        <Route path='dashboard/' element={<SideNav />}>
+          <Route index element={<Profile />} />
+          <Route path='add' element={<AddProperty />} />
+        </Route>
       </Route>
     </Routes>
   );
