@@ -51,16 +51,16 @@ const PropertyDetails = () => {
         <h2 className="text-3xl font-bold text-gray-800">{property.title}</h2>
         <div className='w-36 h-1 bg-gradient-to-r from-primary to-black mb-10 mt-3'></div>
         <div className="mt-4 flex">
-          <img src={`data:image/jpeg;base64,${property[selectedImage]}`} alt={property.title} className="max-w-full h-auto flex-grow max-h-[28rem] object-cover"/>
+          <img src={`${property[selectedImage]}`} alt={property.title} className="max-w-full h-auto flex-grow max-h-[28rem] object-cover"/>
         </div>
         <div className="mt-5">
           <div className="flex justify-center items-center space-x-4 overflow-x-auto">
             <div onClick={() => navigateImage("left")} className="w-12 h-12 rounded-full bg-primary flex items-center justify-center cursor-pointer">
               <FontAwesomeIcon icon={faChevronLeft} className="text-white" />
             </div>
-            <img src={`data:image/jpeg;base64,${property.img1}`} onClick={() => handleImageClick("img1")} alt={property.title} className="flex-grow h-28 object-cover" />
-            <img src={`data:image/jpeg;base64,${property.img2}`} onClick={() => handleImageClick("img2")} alt={property.title} className="flex-grow h-28 object-cover"/>
-            <img src={`data:image/jpeg;base64,${property.img3}`} onClick={() => handleImageClick("img3")} alt={property.title} className="flex-grow h-28 object-cover"/>
+            <img src={`${property.img1}`} onClick={() => handleImageClick("img1")} alt={property.title} className="flex-grow h-28 object-cover" />
+            <img src={`${property.img2}`} onClick={() => handleImageClick("img2")} alt={property.title} className="flex-grow h-28 object-cover"/>
+            <img src={`${property.img3}`} onClick={() => handleImageClick("img3")} alt={property.title} className="flex-grow h-28 object-cover"/>
             <div onClick={() => navigateImage("right")} className="w-12 h-12 rounded-full bg-primary flex items-center justify-center cursor-pointer">
               <FontAwesomeIcon icon={faChevronRight} className="text-white" />
             </div>
