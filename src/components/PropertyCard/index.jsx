@@ -6,7 +6,7 @@ const PropertyCard = ({ property }) => {
   return (
     <Card key={property.id} className="w-full max-w-[22rem] shadow-lg  hover:text-secondary rounded-lg p-4 mt-10 mb-10 transition-colors duration-100 ease-in-out border-primary border-2">
       <CardHeader className='mt--6' floated={false} color="blue-gray">
-        <img className='rounded-lg'src={`data:image/jpeg;base64,${property.img1}`}alt={property.title} />
+        <img className='rounded-lg'src={`${property.img1}`}alt={property.title} />
         <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60 " />
       </CardHeader>
       <CardBody>
