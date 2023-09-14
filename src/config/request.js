@@ -1,5 +1,4 @@
 import axios from "axios";
-
 axios.defaults.baseURL = "http://127.0.0.1:8000/api";
 
 export const sendRequest = async ({
@@ -8,11 +7,12 @@ export const sendRequest = async ({
   params,
   body,
   includeHeaders = true,
+  token
 }) => {
   if (!route) throw Error("URL required");
 
   axios.defaults.headers.authorization = includeHeaders
-    ? `Bearer ${localStorage.getItem("access_token")}`
+    ? `Bearer ${token}`
     : "";
 
   try {
