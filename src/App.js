@@ -10,6 +10,7 @@ import PropertyDetails from './pages/PropertyDetails';
 import SideNav from './components/SideNav';
 import Profile from './pages/Profile';
 import AddProperty from './pages/AddProperty';
+import UserProperties from './pages/UserProperties';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='dashboard/' element={<SideNav />}>
           <Route index element={<Profile />} />
           <Route path='add' element={<AddProperty />} />
+          <Route path='properties' element={<UserProperties />} />
         </Route>
       </Route>
     </Routes>
