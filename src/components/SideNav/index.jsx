@@ -8,7 +8,7 @@ const SideNav = () => {
     <div className="flex p-4 m-5">
       <div>
         <div className='text-white text-xl font-semibold rounded-md bg-primary py-2 px-6'>
-            Dashboard <FontAwesomeIcon icon={faTachometerAlt} className='ml-3'/> 
+            <div className='flex flex-nowrap items-center'> <p>Dashboard</p> <FontAwesomeIcon icon={faTachometerAlt} className='ml-3'/> </div>
         </div>
         <ul className="mt-4 text-lg text-gray-800 flex flex-col items-start">
           <li className="flex items-center mb-4">
