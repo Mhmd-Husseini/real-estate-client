@@ -3,124 +3,122 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import ButtonSm from '../ButtonSm';
 import './style.css';
+import { sendRequest } from "../../config/request";
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 const SellerCalendar = ({ seller }) => {
   const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedHour, setSelectedHour] = useState(null);
-  const availableTime = JSON.parse(seller.available_time) || {
-    days: [], 
-    start_time: '',
-    end_time: '',
-  };
+  const availableTime = JSON.parse(seller.available_time) || {};
+  const token = useSelector((state) => state.auth.token);
+  const location = useLocation();
+  const property_id = location.pathname.split('/').pop();
 
-  const { days, start_time, end_time } = availableTime;
   const isDateAvailable = (date) => {
     const dayName = date.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
-    return days.includes(dayName);
-  };
 
-  const checkIfDateIsAvailable = (date) => {
-    if (!isDateAvailable(date)) {
-      return false;
-    }
-
-    const selectedDateString = date.toISOString().split('T')[0];
-
-    if (
-      selectedDateString >= seller.start_date &&
-      selectedDateString <= seller.end_date
-    ) {
-      if (!selectedHour) {
-        return true;
-      }
-
-      const selectedHourNumber = parseInt(selectedHour.split(':')[0], 10);
-      const startHourNumber = parseInt(start_time.split(':')[0], 10);
-      const endHourNumber = parseInt(end_time.split(':')[0], 10);
-
-      return (
-        selectedHourNumber >= startHourNumber &&
-        selectedHourNumber <= endHourNumber
-      );
+    if (availableTime[dayName] && availableTime[dayName].start_time && availableTime[dayName].end_time) {
+      return true;
     }
     return false;
   };
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    setSelectedHour(null);
   };
+  const renderAvailableTimes = () => {
+    if (!selectedDate || !isDateAvailable(selectedDate)) {
+      return <p className="text-red-500">No available slots for the selected date.</p>;
+    }
 
-  const handleHourChange = (hour) => {
-    setSelectedHour(hour);
-  };
+    const dayName = selectedDate.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
+    const { start_time, end_time } = availableTime[dayName];
 
-  const generateHoursArray = () => {
-    const start = parseInt(start_time.split(':')[0], 10);
-    const end = parseInt(end_time.split(':')[0], 10);
+    const startHour = parseInt(start_time.split(':')[0]);
+    const endHour = parseInt(end_time.split(':')[0]);
     const hoursArray = [];
 
-    for (let i = start; i <= end; i++) {
+    for (let i = startHour; i <= endHour; i++) {
       const hour = `${i.toString().padStart(2, '0')}:00`;
       hoursArray.push(hour);
     }
 
-    return hoursArray;
+    const handleReserve = async () => {
+      if (selectedDate) {
+        if (selectedDate.getHours() === undefined) {
+          console.error('No hour selected');
+          return;
+        }
+    
+        try {
+          const response = await sendRequest({
+            method: "POST",
+            route: `user/bookMeeting`,
+            body: {
+              seller_id: seller.id,
+              property_id: property_id,
+              date: selectedDate.toISOString(), 
+            },
+            token,
+          });    
+          console.log(response);
+        } catch (error) {
+          console.error('Error reserving meeting:', error);
+        }
+      }
+    };
+    
+    
+
+    return (
+      <>
+        <h3 className="text-lg font-bold text-secondary">Available Times</h3>
+        <ul className="mt-2 flex flex-wrap gap-5">
+          {hoursArray.map((hour) => (
+            <li key={hour} className="flex items-center">
+              <input
+                type="radio"
+                id={hour}
+                name="selectedHour"
+                value={hour}
+                checked={selectedDate && selectedDate.getHours() === parseInt(hour.split(':')[0])}
+                onChange={() => handleHourChange(hour)}
+                className="mr-2"
+              />
+              <label htmlFor={hour}>{hour}</label>
+            </li>
+          ))}
+        </ul>
+        <div className="flex justify-center mt-8 mb-2">
+          <ButtonSm buttonText="Reserve" onClick={handleReserve} />
+        </div>
+      </>
+    );
   };
 
-  const hoursArray = generateHoursArray();
-  const hasAvailableTime = days.length > 0 && start_time && end_time;
+  const handleHourChange = (hour) => {
+    const newDate = new Date(selectedDate);
+    const [hourPart] = hour.split(':');
+    newDate.setHours(parseInt(hourPart));
+    setSelectedDate(newDate);
+  };
 
   return (
     <div className="w-full">
       <div>
-        {hasAvailableTime ? (
-          <Calendar
-            onChange={handleDateChange}
-            value={selectedDate}
-            tileClassName={({ date }) => {
-              const isAvailable = checkIfDateIsAvailable(date);
-              return isAvailable ? 'custom-available-style' : 'custom-unavailable-style';
-            }}
-            minDate={new Date()} 
-          />
-        ) : (
-          <p className="text-red-500">Seller has no available time, try to contact him.</p>
-        )}
+        <Calendar
+          onChange={handleDateChange}
+          value={selectedDate}
+          tileClassName={({ date }) => {
+            const isAvailable = isDateAvailable(date);
+            return isAvailable ? 'custom-available-style' : 'custom-unavailable-style';
+          }}
+          minDate={new Date()}
+        />
       </div>
-      {hasAvailableTime && (
-        <div className="bg-gray-100 p-4 rounded-lg">
-          {selectedDate && isDateAvailable(selectedDate) && (
-            <>
-              <h3 className="text-lg font-bold text-secondary">Available Times</h3>
-              <ul className="mt-2 flex flex-wrap gap-5">
-                {hoursArray.map((hour) => (
-                  <li key={hour} className="flex items-center">
-                    <input
-                      type="radio"
-                      id={hour}
-                      name="selectedHour"
-                      value={hour}
-                      checked={selectedHour === hour}
-                      onChange={() => handleHourChange(hour)}
-                      className="mr-2"
-                    />
-                    <label htmlFor={hour}>{hour}</label>
-                  </li>
-                ))}
-              </ul>
-              <div className="flex justify-center mt-8 mb-2">
-                <ButtonSm buttonText="Reserve" />
-              </div>
-            </>
-          )}
-          {(!selectedDate || !isDateAvailable(selectedDate)) && (
-            <p className="text-red-500">
-              No available slots for the selected date.
-            </p>
-          )}
-        </div>
-      )}
+      <div className="bg-gray-100 p-4 rounded-lg">
+        {renderAvailableTimes()}
+      </div>
     </div>
   );
 };
