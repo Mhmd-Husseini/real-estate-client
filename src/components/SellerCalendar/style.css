@@ -1,0 +1,12 @@
+.react-calendar {
+    width: 100%;
+  }
+  
+  .custom-available-style {
+    background-color: green;
+    color: black;
+  }
+  
+  .custom-unavailable-style {
+    color: black;
+  }
