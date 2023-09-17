@@ -5,15 +5,12 @@ import { sendRequest } from "../../config/request";
 import { useNavigate, Link } from "react-router-dom";
 import { setToken } from '../../redux/authSlice';
 import { useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
 
 const LoginForm = ({ onToggle }) => {
   const navigation = useNavigate();
   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
-  const token = useSelector((state) => state.auth.token);
-  console.log(token)
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
