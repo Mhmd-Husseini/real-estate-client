@@ -7,10 +7,13 @@ import './style.css';
 const SellerCalendar = ({ seller }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedHour, setSelectedHour] = useState(null);
+  const availableTime = JSON.parse(seller.available_time) || {
+    days: [], 
+    start_time: '',
+    end_time: '',
+  };
 
-  const availableTime = JSON.parse(seller.available_time);
   const { days, start_time, end_time } = availableTime;
-
   const isDateAvailable = (date) => {
     const dayName = date.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
     return days.includes(dayName);
@@ -40,7 +43,6 @@ const SellerCalendar = ({ seller }) => {
         selectedHourNumber <= endHourNumber
       );
     }
-
     return false;
   };
 
@@ -67,51 +69,58 @@ const SellerCalendar = ({ seller }) => {
   };
 
   const hoursArray = generateHoursArray();
+  const hasAvailableTime = days.length > 0 && start_time && end_time;
 
   return (
     <div className="w-full">
       <div>
-        <Calendar
-          onChange={handleDateChange}
-          value={selectedDate}
-          tileClassName={({ date }) => {
-            const isAvailable = checkIfDateIsAvailable(date);
-            return isAvailable ? 'custom-available-style' : 'custom-unavailable-style';
-          }}
-          minDate={new Date()} 
-        />
-      </div>
-      <div className="bg-gray-100 p-4 rounded-lg">
-        {selectedDate && isDateAvailable(selectedDate) && (
-          <>
-            <h3 className="text-lg font-bold text-secondary">Available Times</h3>
-            <ul className="mt-2 flex flex-wrap gap-5">
-              {hoursArray.map((hour) => (
-                <li key={hour} className="flex items-center">
-                  <input
-                    type="radio"
-                    id={hour}
-                    name="selectedHour"
-                    value={hour}
-                    checked={selectedHour === hour}
-                    onChange={() => handleHourChange(hour)}
-                    className="mr-2"
-                  />
-                  <label htmlFor={hour}>{hour}</label>
-                </li>
-              ))}
-            </ul>
-            <div className="flex justify-center mt-8 mb-2">
-              <ButtonSm buttonText="Reserve" />
-            </div>
-          </>
-        )}
-        {(!selectedDate || !isDateAvailable(selectedDate)) && (
-          <p className="text-red-500">
-            No available slots for the selected date.
-          </p>
+        {hasAvailableTime ? (
+          <Calendar
+            onChange={handleDateChange}
+            value={selectedDate}
+            tileClassName={({ date }) => {
+              const isAvailable = checkIfDateIsAvailable(date);
+              return isAvailable ? 'custom-available-style' : 'custom-unavailable-style';
+            }}
+            minDate={new Date()} 
+          />
+        ) : (
+          <p className="text-red-500">Seller has no available time, try to contact him.</p>
         )}
       </div>
+      {hasAvailableTime && (
+        <div className="bg-gray-100 p-4 rounded-lg">
+          {selectedDate && isDateAvailable(selectedDate) && (
+            <>
+              <h3 className="text-lg font-bold text-secondary">Available Times</h3>
+              <ul className="mt-2 flex flex-wrap gap-5">
+                {hoursArray.map((hour) => (
+                  <li key={hour} className="flex items-center">
+                    <input
+                      type="radio"
+                      id={hour}
+                      name="selectedHour"
+                      value={hour}
+                      checked={selectedHour === hour}
+                      onChange={() => handleHourChange(hour)}
+                      className="mr-2"
+                    />
+                    <label htmlFor={hour}>{hour}</label>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex justify-center mt-8 mb-2">
+                <ButtonSm buttonText="Reserve" />
+              </div>
+            </>
+          )}
+          {(!selectedDate || !isDateAvailable(selectedDate)) && (
+            <p className="text-red-500">
+              No available slots for the selected date.
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 };

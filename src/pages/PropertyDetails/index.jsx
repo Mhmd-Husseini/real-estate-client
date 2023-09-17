@@ -85,8 +85,7 @@ const PropertyDetails = () => {
           <h1 className="font-bold mt-20 text-xl text-secondary">Book a meeting with the buyer</h1>
           <div className='w-28 h-1 bg-gradient-to-r from-primary to-black mb-5 mt-1'></div>
           {/* <img className="full-width-img" src='https://docs.webix.com/media/desktop/calendar.png' alt="Calendar"/> */}
-          <SellerCalendar seller={property.user}/>
-        </div>
+          <SellerCalendar seller={property.user}/> </div>
         <div className="bg-primary p-6 flex flex-col gap-1.5 my-16 font-semibold text-gray-900 text-md">
           <h1 className="text-2xl mb-2 font-bold">Contact Information</h1>
           <p>Name: {property.user.name}</p>
