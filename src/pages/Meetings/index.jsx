@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { sendRequest } from "../../config/request";
 import { useSelector } from "react-redux";
+import ButtonSm from '../../components/ButtonSm';
 
 const Meetings = () => {
   const [availableDays, setAvailableDays] = useState({
@@ -45,12 +46,12 @@ const Meetings = () => {
   };
 
   return (
-    <div>
-      <h2>Set your availability</h2>
-      <p>Let Calendly know when you’re typically available to accept meetings.</p>
-
+    <div className='text-lg text-gray-800 font-medium leading-9 max-w-2xl ml-20 '>
+      <h2 className='text-3xl text-gray-800 font-medium leading-9 '>Set your availability</h2>
+      <div className='w-36 h-1.5 bg-gradient-to-r from-primary to-black mb-5 mt-3'>
+      </div>
       <div>
-        <label>Available hours</label>
+        <label className='text-xl text-secondary font-semibold'>Available hours:</label>
         <div>
           <select value={startTime} onChange={handleStartTimeChange}>
             {Array.from({ length: 24 }, (_, i) => {
@@ -58,7 +59,7 @@ const Meetings = () => {
               return <option key={hour} value={`${hour}:00`}>{`${hour}:00`}</option>;
             })}
           </select>
-          <span>—</span>
+          <span> — </span>
           <select value={endTime} onChange={handleEndTimeChange}>
             {Array.from({ length: 24 }, (_, i) => {
               const hour = String(i).padStart(2, '0');
@@ -69,8 +70,8 @@ const Meetings = () => {
       </div>
 
       <div>
-        <label>Available days</label>
-        <div>
+        <label className='text-xl text-secondary font-semibold'>Available days:</label>
+        <div className='flex gap-4 text-lg font-semibold'>
           {Object.entries(availableDays).map(([day, isChecked]) => (
             <label key={day}>
               <input
@@ -83,8 +84,9 @@ const Meetings = () => {
           ))}
         </div>
       </div>
-
-      <button type="submit" onClick={handleSubmit}>Save</button>
+      <div className='mt-6'> 
+        <ButtonSm onClick={handleSubmit} buttonText='Save' />
+      </div>      
     </div>
   );
 };
