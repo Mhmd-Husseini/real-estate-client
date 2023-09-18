@@ -41,7 +41,6 @@ const PropertyDetails = () => {
 
     setSelectedImage(images[newIndex]);
   };
-
   if (!property) {
     return <div></div>;
   }
@@ -83,7 +82,7 @@ const PropertyDetails = () => {
         <div className="flex flex-col w-full">
           <h1 className="font-bold mt-20 text-xl text-secondary">Book a meeting with the buyer</h1>
           <div className='w-28 h-1 bg-gradient-to-r from-primary to-black mb-5 mt-1'></div>
-          <SellerCalendar seller={property.user}/> </div>
+          <SellerCalendar seller={property.user} booked={property.meetings}/> </div>
         <div className="bg-primary p-6 flex flex-col gap-1.5 my-16 font-semibold text-gray-900 text-md">
           <h1 className="text-2xl mb-2 font-bold">Contact Information</h1>
           <p>Name: {property.user.name}</p>

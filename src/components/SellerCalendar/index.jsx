@@ -7,7 +7,7 @@ import { sendRequest } from "../../config/request";
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-const SellerCalendar = ({ seller }) => {
+const SellerCalendar = ({ seller, booked }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const availableTime = JSON.parse(seller.available_time) || {};
   const token = useSelector((state) => state.auth.token);
@@ -26,6 +26,7 @@ const SellerCalendar = ({ seller }) => {
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+
   const renderAvailableTimes = () => {
     if (!selectedDate || !isDateAvailable(selectedDate)) {
       return <p className="text-red-500">No available slots for the selected date.</p>;
@@ -67,27 +68,39 @@ const SellerCalendar = ({ seller }) => {
         }
       }
     };
-    
-    
 
     return (
       <>
         <h3 className="text-lg font-bold text-secondary">Available Times</h3>
         <ul className="mt-2 flex flex-wrap gap-5">
-          {hoursArray.map((hour) => (
-            <li key={hour} className="flex items-center">
-              <input
-                type="radio"
-                id={hour}
-                name="selectedHour"
-                value={hour}
-                checked={selectedDate && selectedDate.getHours() === parseInt(hour.split(':')[0])}
-                onChange={() => handleHourChange(hour)}
-                className="mr-2"
-              />
-              <label htmlFor={hour}>{hour}</label>
-            </li>
-          ))}
+          {hoursArray.map((hour) => {
+            const isBooked = booked.some((booking) => {
+              const bookingDate = new Date(booking.date);
+              return (
+                bookingDate.getDate() === selectedDate.getDate() &&
+                bookingDate.getHours() === parseInt(hour.split(':')[0])
+              );
+            });
+
+            if (isBooked) {
+              return null; 
+            }
+
+            return (
+              <li key={hour} className="flex items-center">
+                <input
+                  type="radio"
+                  id={hour}
+                  name="selectedHour"
+                  value={hour}
+                  checked={selectedDate && selectedDate.getHours() === parseInt(hour.split(':')[0])}
+                  onChange={() => handleHourChange(hour)}
+                  className="mr-2"
+                />
+                <label htmlFor={hour}>{hour}</label>
+              </li>
+            );
+          })}
         </ul>
         <div className="flex justify-center mt-8 mb-2">
           <ButtonSm buttonText="Reserve" onClick={handleReserve} />
