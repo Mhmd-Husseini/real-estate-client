@@ -12,12 +12,12 @@ const PropertyCard = ({ property }) => {
       <CardBody className='p-3'>
         <div className="mb-3 flex items-center justify-between">
           <Typography variant="h5" color="blue-gray" className="flex font-medium transition-colors duration-300 ease-in-out ">
-            <p>{property.title}</p> <p className='text-gray-500 text-sm'> {property.area} sqft</p>
+            <span>{property.title}</span> <span className='text-gray-500 text-sm'> {property.area} sqft</span>
           </Typography>
         </div>
         <Typography className=" text-secondary font-semibold">
-          {property.price}$
-          <p className='text-primary font-bold'>{property.city.city}</p>          
+          {property.price}$ <br></br>
+          <span className='text-primary font-bold'>{property.city.city}</span>          
         </Typography>
       </CardBody>
       <CardFooter className='py-0 px-3' >
