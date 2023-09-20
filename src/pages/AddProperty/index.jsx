@@ -246,7 +246,7 @@ const AddProperty = () => {
             )}
           </div>
           <div className="w-full px-4">
-            <label className="block mb-2 text-gray-600">Set the Location by Dragging Marker</label>
+            <label className="block mb-2 text-gray-600">Set the Location by Dragging the Mark</label>
             <Map handleLatLng={handleLatLng} position={[propertyDetails.latitude, propertyDetails.longitude]} draggable={true} />
           </div>
         </div>

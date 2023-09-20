@@ -24,7 +24,7 @@ const Nav = () => {
         });
         if (response.status === 'Success' && response.authenticated) {
           setAuthenticated(true); 
-          setUser(response.user)
+          setUser(response.user);
         } else {
           setAuthenticated(false);
          }
@@ -38,7 +38,7 @@ const Nav = () => {
 
   return (
     <div>
-      <div className="py-8 flex justify-between items-center mx-auto max-w-screen-xl">
+      <div className="pt-8 pb-5 flex justify-between items-center mx-auto max-w-screen-xl">
         <img src={logo} alt="Logo" className="h-22 w-22" />
         <div className="flex justify-between w-1/2">
           <NavLink to="/" isActive={location.pathname === '/'}>

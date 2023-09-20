@@ -18,7 +18,7 @@ const Map = ({handleLatLng, position, draggable}) => {
         />
         <Marker position={position} draggable={draggable} eventHandlers={{dragend: handleMarkerEvent}}>
         <Popup>
-            Drag the marker to set <br></br>the location of your property
+            Drag the mark to set <br></br>the location of your property
         </Popup>
         </Marker>
     </MapContainer>
