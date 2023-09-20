@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropertyCard from '../../components/PropertyCard';
 import { sendRequest } from "../../config/request";
-import { useSelector } from "react-redux";
 
 const UserProperties = () => {
   const [properties, setProperties] = useState([]);
-  const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await sendRequest({ method: "GET", route: "user/userProperties", token });
+        const response = await sendRequest({ method: "GET", route: "user/userProperties" });
         setProperties(response);
         console.log(response)
       } catch (error) {
@@ -18,7 +16,7 @@ const UserProperties = () => {
       }
     };
     fetchData();
-  }, [token]); 
+  }, []); 
 
   return (
     <div className='mx-auto max-w-screen-lg'>
@@ -28,7 +26,7 @@ const UserProperties = () => {
             <PropertyCard key={property.id} property={property} />
           ))
         ) : (
-          <p></p>
+          <div></div>
         )}
       </div>
     </div>
