@@ -7,12 +7,11 @@ export const sendRequest = async ({
   params,
   body,
   includeHeaders = true,
-  token
 }) => {
   if (!route) throw Error("URL required");
 
   axios.defaults.headers.authorization = includeHeaders
-    ? `Bearer ${token}`
+    ? `Bearer ${localStorage.getItem("token")}`
     : "";
 
   try {
