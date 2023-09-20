@@ -4,13 +4,11 @@ import 'react-calendar/dist/Calendar.css';
 import ButtonSm from '../ButtonSm';
 import './style.css';
 import { sendRequest } from "../../config/request";
-import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 const SellerCalendar = ({ seller, booked }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const availableTime = JSON.parse(seller.available_time) || {};
-  const token = useSelector((state) => state.auth.token);
   const location = useLocation();
   const property_id = location.pathname.split('/').pop();
 
@@ -60,8 +58,7 @@ const SellerCalendar = ({ seller, booked }) => {
               property_id: property_id,
               date: selectedDate.toISOString(), 
             },
-            token,
-          });    
+          });     
           console.log(response);
         } catch (error) {
           console.error('Error reserving meeting:', error);
