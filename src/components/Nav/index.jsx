@@ -1,16 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import logo from '../../logo.svg';
 import ButtonSm from '../ButtonSm';
-import NavLink from '../NavLink'; 
+import NavLink from '../NavLink';
+import { sendRequest } from '../../config/request'; 
 
 const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [authenticated, setAuthenticated] = useState(false); 
+  const [user, setUser] = useState(); 
 
   const handleSignInClick = () => {
     navigate('/auth');
   };
+
+  useEffect(() => {
+    async function checkAuthentication() {
+      try {
+        const response = await sendRequest({
+          method: 'GET',
+          route: 'guest/profile', 
+        });
+        if (response.status === 'Success' && response.authenticated) {
+          setAuthenticated(true); 
+          setUser(response.user)
+        } else {
+          setAuthenticated(false);
+         }
+        } catch (error) {
+        console.error('Error checking authentication:', error);
+      }
+    }
+    checkAuthentication();
+  }, []);
+  
 
   return (
     <div>
@@ -18,7 +42,7 @@ const Nav = () => {
         <img src={logo} alt="Logo" className="h-22 w-22" />
         <div className="flex justify-between w-1/2">
           <NavLink to="/" isActive={location.pathname === '/'}>
-            Home
+            Home 
           </NavLink>
           <NavLink to="/houses" isActive={location.pathname.startsWith('/houses')}>
             Houses
@@ -29,13 +53,15 @@ const Nav = () => {
           <NavLink to="/trends" isActive={location.pathname.startsWith('/trends')}>
             Trends
           </NavLink>
-          <NavLink to="/dashboard" isActive={location.pathname.startsWith('/dashboard')}>
-            Dashboard
-          </NavLink>
+          {authenticated && ( 
+            <NavLink to="/dashboard" isActive={location.pathname.startsWith('/dashboard')}>
+              Dashboard
+            </NavLink>
+          )}
         </div>
         <ButtonSm buttonText="Sign In" onClick={handleSignInClick} />
       </div>
-      <Outlet />
+      <Outlet user={user}/>
     </div>
   );
 };
