@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
+import Map from "../../components/Map";
 import ButtonSm from "../../components/ButtonSm";
 import { sendRequest } from "../../config/request";
-import { useSelector } from "react-redux";
 import Broker from '../../hero-img.png'
+import 'leaflet/dist/leaflet.css';
+
 const AddProperty = () => {
+  const regions = [{key:1 , name: 'Beirut'},{key:2, name: 'Jounieh'},{key:3, name: 'Chouf'},{key:4, name: 'Batroun'},{key:5, name: 'Keserwen'},{key:6, name: 'Byblos'},{key:7, name: 'Nabatieh'},{key:8, name: 'Saida'},{ key:9, name: 'Tyre'}];
   const navigate = useNavigate();
-
-  const token = useSelector((state) => state.auth.token);
-
   const [propertyType, setPropertyType] = useState("");
+
   const [propertyDetails, setPropertyDetails] = useState({
-    cityId: "",
+    city_id: "",
     title: "",
     description: "",
     price: "",
     area: "",
     address: "",
-    latitude: "",
-    longitude: "",
+    latitude: 33.88,
+    longitude: 35.5,
   });
 
   const [homeProperties, setHomeProperties] = useState({
@@ -29,6 +30,10 @@ const AddProperty = () => {
     garages: "",
   });
 
+  const handleLatLng = (lat, lng) =>{
+    setPropertyDetails({...propertyDetails, latitude: lat, longitude: lng})
+  }
+
   const [imageData, setImageData] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]); 
   const [validationErrors, setValidationErrors] = useState({});
@@ -36,7 +41,7 @@ const AddProperty = () => {
   const validateForm = () => {
     const errors = {};
     if (!propertyType) errors.propertyType = "Please select a property type";
-    if (!propertyDetails.cityId) errors.cityId = "City ID is required";
+    if (!propertyDetails.city_id) errors.cityId = "City is required";
     if (!propertyDetails.title) errors.title = "Title is required";
     if (!propertyDetails.description) errors.description = "Description is required";
     if (!propertyDetails.price) errors.price = "Price is required";
@@ -59,7 +64,7 @@ const AddProperty = () => {
     const isFormValid = validateForm();
     if (!isFormValid) return;
     const request = {
-      city_id: propertyDetails.cityId,
+      city_id: propertyDetails.city_id,
       title: propertyDetails.title,
       description: propertyDetails.description,
       price: propertyDetails.price,
@@ -79,7 +84,6 @@ const AddProperty = () => {
         method: "POST",
         route: "/user/addOrUpdate",
         body: request,
-        token: token,
       });
       if (response.status === 401) {
         navigate("/auth");
@@ -87,7 +91,7 @@ const AddProperty = () => {
         console.log(response);
         setPropertyType("");
         setPropertyDetails({
-          cityId: "",
+          city_id: "",
           title: "",
           description: "",
           price: "",
@@ -149,24 +153,30 @@ const AddProperty = () => {
               onChange={(e) => setPropertyType(e.target.value)}
               className="p-3 border rounded-md border-gray-300 w-full"
             >
-              <option value="">Select Property Type</option>
+              <option value="">Select Property Type </option>
               <option value="home">Home</option>
               <option value="land">Land</option>
             </select>
             {validationErrors.propertyType && (
-              <p className="text-red-400 text-sm">{validationErrors.propertyType}</p>
+              <p className="text-red-400 text-sm">{validationErrors.propertyType} </p>
             )}
           </div>
           <div className="w-full px-4">
-            <label className="block mb-2 text-gray-600">City ID</label>
-            <Input
-              label=""
-              type="number"
-              onChange={(value) => setPropertyDetails({ ...propertyDetails, cityId: value })}
-              value={propertyDetails.cityId}
-            />
-            {validationErrors.cityId && (
-              <p className="text-red-400 text-sm">{validationErrors.cityId}</p>
+          <label className="block mb-2 text-gray-600">City</label>
+            <select
+              value={propertyDetails.city_id} 
+              onChange={(e) => setPropertyDetails({ ...propertyDetails, city_id: e.target.value })} 
+              className="p-3 border rounded-md border-gray-300 w-full"
+            >
+              <option value="">Select City</option>
+              {regions.map((region) => (
+                <option key={region.key} value={region.key}>
+                  {region.name}
+                </option>
+              ))}
+            </select>
+            {validationErrors.city_id && (
+              <p className="text-red-400 text-sm">{validationErrors.city_id}</p>
             )}
           </div>
           <div className="w-full px-4">
@@ -236,31 +246,11 @@ const AddProperty = () => {
             )}
           </div>
           <div className="w-full px-4">
-            <label className="block mb-2 text-gray-600">Latitude</label>
-            <Input
-              label=""
-              type="number"
-              onChange={(value) => setPropertyDetails({ ...propertyDetails, latitude: value })}
-              value={propertyDetails.latitude}
-            />
-            {validationErrors.latitude && (
-              <p className="text-red-400 text-sm">{validationErrors.latitude}</p>
-            )}
-          </div>
-          <div className="w-full px-4">
-            <label className="block mb-2 text-gray-600">Longitude</label>
-            <Input
-              label=""
-              type="number"
-              onChange={(value) => setPropertyDetails({ ...propertyDetails, longitude: value })}
-              value={propertyDetails.longitude}
-            />
-            {validationErrors.longitude && (
-              <p className="text-red-400 text-sm">{validationErrors.longitude}</p>
-            )}
+            <label className="block mb-2 text-gray-600">Set the Location by Dragging Marker</label>
+            <Map handleLatLng={handleLatLng} position={[propertyDetails.latitude, propertyDetails.longitude]} draggable={true} />
           </div>
         </div>
-    
+
         {propertyType === "home" && (
           <div className="flex flex-wrap -mx-4 space-y-4">
             <div className="w-full px-4">
@@ -342,6 +332,6 @@ const AddProperty = () => {
     </div>
   );
   
-};
+}; 
 
 export default AddProperty;
