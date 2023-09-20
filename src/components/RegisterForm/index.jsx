@@ -3,12 +3,9 @@ import Input from "../Input";
 import ButtonSm from "../ButtonSm";
 import { sendRequest } from "../../config/request";
 import { useNavigate, Link } from "react-router-dom";
-import { setToken } from '../../redux/authSlice';
-import { useDispatch } from 'react-redux';
 
 const RegisterForm = ({ onToggle }) => {
   const navigation = useNavigate();
-  const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({name: "", email: "", password: "", phone: "" });
 
   const [error, setError] = useState(null);
@@ -45,7 +42,7 @@ const RegisterForm = ({ onToggle }) => {
 
     try {
       const response = await sendRequest({method: "POST", route: "guest/register", body: credentials,});
-      dispatch(setToken(response.data.token));
+      localStorage.setItem('token',response.data.token);
       navigation("/");
     } catch (error) {
       console.log(error);
