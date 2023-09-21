@@ -110,134 +110,107 @@ const AddProperty = () => {
   };
 
   return (
-    <div className="flex flex-row-reverse gap-10">
-      <div> <img src={Broker}></img> </div> 
-      <div className="max-w-lg ml-20 space-y-4">
-        <div className="flex flex-wrap -mx-4 space-y-4">
-          <div className="w-full px-4">
-            <select value={propertyType} onChange={(e) => setPropertyType(e.target.value)}className="p-3 border rounded-md border-gray-300 w-full">
-              <option value="">Select Property Type </option>
-              <option value="home">Home</option>
-              <option value="land">Land</option>
-            </select>
-            {validationErrors.propertyType && (
-              <p className="text-red-400 text-sm">{validationErrors.propertyType} </p>
-            )}
-          </div>
-          <div className="w-full px-4">
-          <label className="block mb-2 text-gray-600">City</label>
-            <select value={propertyDetails.city_id}onChange={(e) => setPropertyDetails({ ...propertyDetails, city_id: e.target.value })} className="p-3 border rounded-md border-gray-300 w-full">
-              <option value="">Select City</option>
-              {regions.map((region) => (
-                <option key={region.key} value={region.key}>{region.name}</option>
-              ))}
-            </select>
-            {validationErrors.city_id && (
-              <p className="text-red-400 text-sm">{validationErrors.city_id}</p>
-            )}
-          </div>
-          <div className="w-full px-4">
-            <label className="block mb-2 text-gray-600">Title</label>
-            <Input label="" type="text" onChange={(value) => setPropertyDetails({ ...propertyDetails, title: value })} value={propertyDetails.title}/>
-            {validationErrors.title && (
-              <p className="text-red-400 text-sm">{validationErrors.title}</p>
-            )}
-          </div>
-          <div className="w-full px-4">
-            <label className="block mb-2 text-gray-600">Description</label>
-            <Input label=""type="text"onChange={(value) => setPropertyDetails({ ...propertyDetails, description: value })}value={propertyDetails.description}/>
-            {validationErrors.description && (
-              <p className="text-red-400 text-sm">{validationErrors.description}</p>
-            )}
-          </div>
-        </div>
-    
-        <div className="flex flex-wrap -mx-4 space-y-4">
-          <div className="w-full px-4">
-            <label className="block mb-2 text-gray-600">Price</label>
-            <Input label="" type="number"onChange={(value) => setPropertyDetails({ ...propertyDetails, price: value })}value={propertyDetails.price} />
-            {validationErrors.price && (
-              <p className="text-red-400 text-sm">{validationErrors.price}</p>
-            )}
-          </div>
-          <div className="w-full px-4">
-            <label className="block mb-2 text-gray-600">Area</label>
-            <Input label="" type="number"onChange={(value) => setPropertyDetails({ ...propertyDetails, area: value })}value={propertyDetails.area}/>
-            {validationErrors.area && (
-              <p className="text-red-400 text-sm">{validationErrors.area}</p>
-            )}
-          </div>
-        </div>
-    
-        <div className="flex flex-wrap -mx-4 space-y-4">
-          <div className="w-full px-4">
-            <label className="block mb-2 text-gray-600">Address</label>
-            <Input label="" type="text" onChange={(value) => setPropertyDetails({ ...propertyDetails, address: value })}value={propertyDetails.address}/>
-            {validationErrors.address && (
-              <p className="text-red-400 text-sm">{validationErrors.address}</p>
-            )}
-          </div>
-          <div className="w-full px-4">
-            <label className="block mb-2 text-gray-600">Set the Location by Dragging the Mark</label>
-            <Map handleLatLng={handleLatLng} position={[propertyDetails.latitude, propertyDetails.longitude]} draggable={true} />
-          </div>
-        </div>
-
-        {propertyType === "home" && (
-          <div className="flex flex-wrap -mx-4 space-y-4">
-            <div className="w-full px-4">
-              <label className="block mb-2 text-gray-600">Number of Rooms</label>
-              <Input label="" type="number"onChange={(value) => setHomeProperties({ ...homeProperties, rooms: value })}value={homeProperties.rooms}/>
-              {validationErrors.rooms && (
-                <p className="text-red-400 text-sm">{validationErrors.rooms}</p>
-              )}
-            </div>
-            <div className="w-full px-4">
-              <label className="block mb-2 text-gray-600">Number of Balconies</label>
-              <Input label=""type="number"onChange={(value) => setHomeProperties({ ...homeProperties, balconies: value })}value={homeProperties.balconies}/>
-              {validationErrors.balconies && (
-                <p className="text-red-400 text-sm">{validationErrors.balconies}</p>
-              )}
-            </div>
-            <div className="w-full px-4">
-              <label className="block mb-2 text-gray-600">Number of Bathrooms</label>
-              <Input label=""type="number"onChange={(value) => setHomeProperties({ ...homeProperties, bathrooms: value })}value={homeProperties.bathrooms}/>
-              {validationErrors.bathrooms && (
-                <p className="text-red-400 text-sm">{validationErrors.bathrooms}</p>
-              )}
-            </div>
-            <div className="w-full px-4">
-              <label className="block mb-2 text-gray-600">Number of Garages</label>
-              <Input label=""type="number"onChange={(value) => setHomeProperties({ ...homeProperties, garages: value })}value={homeProperties.garages}/>
-              {validationErrors.garages && (
-                <p className="text-red-400 text-sm">{validationErrors.garages}</p>
-              )}
-            </div>
-          </div>
-        )}
-    
-        <div className="flex flex-wrap -mx-4 space-y-4">
-          <div className="w-full px-4">
-            <label className="block mb-2 text-gray-600">Upload Images</label>
-            <input label=""type="file"multipleaccept="image/*"onChange={handleImageChange}className="p-2 border rounded-md border-gray-300 w-full"/>
-            {validationErrors.images && (
-              <p className="text-red-400 text-sm">{validationErrors.images}</p>
-            )}
-          </div>
-        </div>
-        <div className="flex items-center justify-center space-x-4">
-          {imagePreviews.map((preview, index) => (
-            <div key={index}>{preview}</div>
-          ))}
-        </div>
-        <div className="flex justify-center">
-          <ButtonSm buttonText="Submit" onClick={handleSubmit} />
+    <div>
+      <div className="max-w-lg ml-20 space-y-4 mb-10">
+        <div>
+          <h2 className="text-3xl text-gray-800 font-medium leading-9">Add Your Property</h2>
+          <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mb-5 mt-3"></div>
         </div>
       </div>
-      {showModal && (<Modal message="Property Added Successfuly" onClose={closeModal} />)}
+      <div className="flex flex-row-reverse gap-20">
+        <div> <img src={Broker}></img> </div> 
+        <div className="max-w-lg ml-20 space-y-4">
+          <div className="flex flex-wrap space-y-4">
+            <div className="w-full ">
+              <select value={propertyType} onChange={(e) => setPropertyType(e.target.value)}className="p-3 border rounded-md border-gray-300 w-full">
+                <option value="">Select Property Type </option>
+                <option value="home">Home</option>
+                <option value="land">Land</option>
+              </select>
+              {validationErrors.propertyType && (<p className="text-red-400 text-sm">{validationErrors.propertyType} </p>)}
+            </div>
+            <div className="w-full">
+            <label className="block mb-2 text-gray-600">City</label>
+              <select value={propertyDetails.city_id}onChange={(e) => setPropertyDetails({ ...propertyDetails, city_id: e.target.value })} className="p-3 border rounded-md border-gray-300 w-full">
+                <option value="">Select City</option>
+                {regions.map((region) => (<option key={region.key} value={region.key}>{region.name}</option>))}
+              </select>
+              {validationErrors.city_id && (<p className="text-red-400 text-sm">{validationErrors.city_id}</p>)}
+            </div>
+            <div className="w-full">
+              <label className="block mb-2 text-gray-600">Title</label>
+              <Input label="" type="text" onChange={(value) => setPropertyDetails({ ...propertyDetails, title: value })} value={propertyDetails.title}/>
+              {validationErrors.title && (<p className="text-red-400 text-sm">{validationErrors.title}</p>)}
+            </div>
+            <div className="w-full">
+              <label className="block mb-2 text-gray-600">Description</label>
+              <Input label=""type="text"onChange={(value) => setPropertyDetails({ ...propertyDetails, description: value })}value={propertyDetails.description}/>
+              {validationErrors.description && (<p className="text-red-400 text-sm">{validationErrors.description}</p>)}
+            </div>
+            <div className="w-full">
+              <label className="block mb-2 text-gray-600">Price</label>
+              <Input label="" type="number"onChange={(value) => setPropertyDetails({ ...propertyDetails, price: value })}value={propertyDetails.price} />
+              {validationErrors.price && (<p className="text-red-400 text-sm">{validationErrors.price}</p>)}
+            </div>
+            <div className="w-full">
+              <label className="block mb-2 text-gray-600">Area</label>
+              <Input label="" type="number"onChange={(value) => setPropertyDetails({ ...propertyDetails, area: value })}value={propertyDetails.area}/>
+              {validationErrors.area && (<p className="text-red-400 text-sm">{validationErrors.area}</p>)}
+            </div>
+            <div className="w-full">
+              <label className="block mb-2 text-gray-600">Address</label>
+              <Input label="" type="text" onChange={(value) => setPropertyDetails({ ...propertyDetails, address: value })}value={propertyDetails.address}/>
+              {validationErrors.address && (<p className="text-red-400 text-sm">{validationErrors.address}</p>)}
+            </div>
+            <div className="w-full">
+              <label className="block mb-2 text-gray-600">Set the Location by Dragging the Mark</label>
+              <Map handleLatLng={handleLatLng} position={[propertyDetails.latitude, propertyDetails.longitude]} draggable={true} />
+            </div>
+          </div>
+
+          {propertyType === "home" && (
+            <div >
+              <div className="w-full">
+                <label className="block mb-2 text-gray-600">Number of Rooms</label>
+                <Input label="" type="number"onChange={(value) => setHomeProperties({ ...homeProperties, rooms: value })}value={homeProperties.rooms}/>
+                {validationErrors.rooms && (<p className="text-red-400 text-sm">{validationErrors.rooms}</p>)}
+              </div>
+              <div className="w-full">
+                <label className="block mb-2 text-gray-600">Number of Balconies</label>
+                <Input label=""type="number"onChange={(value) => setHomeProperties({ ...homeProperties, balconies: value })}value={homeProperties.balconies}/>
+                {validationErrors.balconies && (<p className="text-red-400 text-sm">{validationErrors.balconies}</p>)}
+              </div>
+              <div className="w-full">
+                <label className="block mb-2 text-gray-600">Number of Bathrooms</label>
+                <Input label=""type="number"onChange={(value) => setHomeProperties({ ...homeProperties, bathrooms: value })}value={homeProperties.bathrooms}/>
+                {validationErrors.bathrooms && (<p className="text-red-400 text-sm">{validationErrors.bathrooms}</p>)}
+              </div>
+              <div className="w-full">
+                <label className="block mb-2 text-gray-600">Number of Garages</label>
+                <Input label=""type="number"onChange={(value) => setHomeProperties({ ...homeProperties, garages: value })}value={homeProperties.garages}/>
+                {validationErrors.garages && (<p className="text-red-400 text-sm">{validationErrors.garages}</p>)}
+              </div>
+            </div>
+          )}
+
+          <div>
+            <div className="w-full">
+              <label className="block mb-2 text-gray-600">Upload Images</label>
+              <input label=""type="file"multipleaccept="image/*"onChange={handleImageChange}className="p-2 border rounded-md border-gray-300 w-full"/>
+              {validationErrors.images && (<p className="text-red-400 text-sm">{validationErrors.images}</p>)}
+            </div>
+          </div>
+          <div className="flex items-center justify-center space-x-4">
+            {imagePreviews.map((preview, index) => (<div key={index}>{preview}</div>))}
+          </div>
+          <div className="flex justify-center">
+            <ButtonSm buttonText="Submit" onClick={handleSubmit} />
+          </div>
+        </div>
+        {showModal && (<Modal message="Property Added Successfuly" onClose={closeModal} />)}
+      </div>
     </div>
   );
-  
 }; 
 
 export default AddProperty;

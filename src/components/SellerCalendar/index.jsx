@@ -65,6 +65,7 @@ const SellerCalendar = ({ seller, booked }) => {
           console.log(response)    
         } catch (error) {
           console.error('Error reserving meeting:', error);
+          
         }
       }
     };
