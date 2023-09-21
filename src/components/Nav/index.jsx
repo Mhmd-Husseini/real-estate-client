@@ -34,7 +34,6 @@ const Nav = () => {
     }
     checkAuthentication();
   }, []);
-  
 
   return (
     <div>

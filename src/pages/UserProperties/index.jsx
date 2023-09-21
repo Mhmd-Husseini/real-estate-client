@@ -20,7 +20,7 @@ const UserProperties = () => {
 
   return (
     <div className='mx-auto max-w-screen-lg'>
-      <div className='flex justify-around flex-wrap'>
+      <div className='flex justify-around gap-12 flex-wrap'>
         {properties.length > 0 ? (
           properties.map((property) => (
             <PropertyCard key={property.id} property={property} />
