@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
 import Map from "../../components/Map";
+import Modal from "../../components/Modal";
 import ButtonSm from "../../components/ButtonSm";
 import { sendRequest } from "../../config/request";
 import Broker from '../../hero-img.png'
@@ -11,7 +12,6 @@ const AddProperty = () => {
   const regions = [{key:1 , name: 'Beirut'},{key:2, name: 'Jounieh'},{key:3, name: 'Chouf'},{key:4, name: 'Batroun'},{key:5, name: 'Keserwen'},{key:6, name: 'Byblos'},{key:7, name: 'Nabatieh'},{key:8, name: 'Saida'},{ key:9, name: 'Tyre'}];
   const navigate = useNavigate();
   const [propertyType, setPropertyType] = useState("");
-
   const [propertyDetails, setPropertyDetails] = useState({
     city_id: "",
     title: "",
@@ -22,21 +22,25 @@ const AddProperty = () => {
     latitude: 33.88,
     longitude: 35.5,
   });
-
   const [homeProperties, setHomeProperties] = useState({
     rooms: "",
     balconies: "",
     bathrooms: "",
     garages: "",
   });
-
   const handleLatLng = (lat, lng) =>{
     setPropertyDetails({...propertyDetails, latitude: lat, longitude: lng})
   }
-
   const [imageData, setImageData] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]); 
   const [validationErrors, setValidationErrors] = useState({});
+  const [showModal, setShowModal] = useState(true);
+  const openModal = () => {
+    setShowModal(false);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   const validateForm = () => {
     const errors = {};
@@ -89,6 +93,7 @@ const AddProperty = () => {
         navigate("/auth");
       } else {
         console.log(response);
+        openModal()
         setPropertyType("");
         setPropertyDetails({
           city_id: "",
@@ -329,6 +334,7 @@ const AddProperty = () => {
           <ButtonSm buttonText="Submit" onClick={handleSubmit} />
         </div>
       </div>
+      {showModal && (<Modal message="Property Added Successfuly" onClose={closeModal} />)}
     </div>
   );
   
