@@ -1,9 +1,24 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTachometerAlt, faUser, faHome, faBuilding, faCalendar } from '@fortawesome/free-solid-svg-icons'; 
+import { faTachometerAlt, faUser, faHome, faBuilding, faCalendar, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'; 
+import { sendRequest } from '../../config/request'; 
 
 const SideNav = () => {
+  const navigate = useNavigate();
+  const logout = async () => {
+    try {
+      await sendRequest({
+        method: "POST",
+        route: "user/logout", 
+        includeHeaders: true, 
+      });
+        localStorage.removeItem("token");
+        navigate("/auth");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
   return (
     <div className="flex p-4 m-5">
       <div>
@@ -31,6 +46,9 @@ const SideNav = () => {
               <FontAwesomeIcon icon={faCalendar} className="mr-3" /> Meetings
             </NavLink>
           </li>
+          <button className="flex items-center mt-2" onClick={() => logout()} >
+            <FontAwesomeIcon icon={faSignOutAlt} className="mr-3"  /> Logout
+          </button>
         </ul>
       </div>
       <Outlet />
