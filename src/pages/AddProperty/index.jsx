@@ -18,9 +18,9 @@ const AddProperty = () => {
   const [imageData, setImageData] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]); 
   const [validationErrors, setValidationErrors] = useState({});
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const openModal = () => {
-    setShowModal(false);
+    setShowModal(true);
   };
   const closeModal = () => {
     setShowModal(false);
