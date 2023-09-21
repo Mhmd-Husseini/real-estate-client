@@ -2,32 +2,26 @@ import React, { useState } from 'react';
 import { sendRequest } from "../../config/request";
 import ButtonSm from '../../components/ButtonSm';
 import Meeting from '../../components/Meeting';
+import Modal from "../../components/Modal";
 
 const Meetings = () => {
-  const [availability, setAvailability] = useState({
-    sunday: { start_time: '', end_time: '' },
-    monday: { start_time: '', end_time: '' },
-    tuesday: { start_time: '', end_time: '' },
-    wednesday: { start_time: '', end_time: '' },
-    thursday: { start_time: '', end_time: '' },
-    friday: { start_time: '', end_time: '' },
-    saturday: { start_time: '', end_time: '' },
-  });
-
+  const [availability, setAvailability] = useState({sunday: { start_time: '', end_time: '' },monday: { start_time: '', end_time: '' },tuesday: { start_time: '', end_time: '' },
+    wednesday: { start_time: '', end_time: '' },thursday: { start_time: '', end_time: '' },friday: { start_time: '', end_time: '' },saturday: { start_time: '', end_time: '' },});
+  const [showModal, setShowModal] = useState(false);
+  const openModal = () => {setShowModal(true);};
+  const closeModal = () => {setShowModal(false);};
   const handleStartTimeChange = (day, value) => {
     setAvailability({ ...availability, [day]: { ...availability[day], start_time: value } });
   };
-
   const handleEndTimeChange = (day, value) => {
     setAvailability({ ...availability, [day]: { ...availability[day], end_time: value } });
   };
 
   const handleSubmit = async () => {
     const availableTime = JSON.stringify(availability);
-
     try {
       const response = await sendRequest({ method: "POST", route: `user/setAvailable`, body: { available_time: availableTime }});
-      console.log(response);
+      openModal()
     } catch (error) {
       console.error('Error updating available time:', error);
     }
@@ -72,6 +66,7 @@ const Meetings = () => {
         <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mb-5 mt-3"></div>
         <Meeting />
       </div>
+      {showModal && (<Modal message="Available Time Set Successfuly" onClose={closeModal} />)}
     </div>
   );
 };
