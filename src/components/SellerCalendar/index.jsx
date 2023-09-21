@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import ButtonSm from '../ButtonSm';
+import Modal from '../Modal';
 import './style.css';
 import { sendRequest } from "../../config/request";
 import { useLocation } from 'react-router-dom';
@@ -11,7 +12,9 @@ const SellerCalendar = ({ seller, booked }) => {
   const availableTime = JSON.parse(seller.available_time) || {};
   const location = useLocation();
   const property_id = location.pathname.split('/').pop();
-
+  const [showModal, setShowModal] = useState(false);
+  const openModal = () => {setShowModal(true);};
+  const closeModal = () => {setShowModal(false);};
   const isDateAvailable = (date) => {
     const dayName = date.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
 
@@ -32,7 +35,6 @@ const SellerCalendar = ({ seller, booked }) => {
 
     const dayName = selectedDate.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
     const { start_time, end_time } = availableTime[dayName];
-
     const startHour = parseInt(start_time.split(':')[0]);
     const endHour = parseInt(end_time.split(':')[0]);
     const hoursArray = [];
@@ -58,8 +60,9 @@ const SellerCalendar = ({ seller, booked }) => {
               property_id: property_id,
               date: selectedDate.toISOString(), 
             },
-          });     
-          console.log(response);
+          }); 
+          openModal()
+          console.log(response)    
         } catch (error) {
           console.error('Error reserving meeting:', error);
         }
@@ -129,6 +132,7 @@ const SellerCalendar = ({ seller, booked }) => {
       <div className="bg-gray-100 p-4 rounded-lg">
         {renderAvailableTimes()}
       </div>
+      {showModal && (<Modal message="Meeting Booked Successfuly" onClose={closeModal} />)}
     </div>
   );
 };
