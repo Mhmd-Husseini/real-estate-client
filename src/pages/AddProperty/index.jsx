@@ -12,25 +12,9 @@ const AddProperty = () => {
   const regions = [{key:1 , name: 'Beirut'},{key:2, name: 'Jounieh'},{key:3, name: 'Chouf'},{key:4, name: 'Batroun'},{key:5, name: 'Keserwen'},{key:6, name: 'Byblos'},{key:7, name: 'Nabatieh'},{key:8, name: 'Saida'},{ key:9, name: 'Tyre'}];
   const navigate = useNavigate();
   const [propertyType, setPropertyType] = useState("");
-  const [propertyDetails, setPropertyDetails] = useState({
-    city_id: "",
-    title: "",
-    description: "",
-    price: "",
-    area: "",
-    address: "",
-    latitude: 33.88,
-    longitude: 35.5,
-  });
-  const [homeProperties, setHomeProperties] = useState({
-    rooms: "",
-    balconies: "",
-    bathrooms: "",
-    garages: "",
-  });
-  const handleLatLng = (lat, lng) =>{
-    setPropertyDetails({...propertyDetails, latitude: lat, longitude: lng})
-  }
+  const [propertyDetails, setPropertyDetails] = useState({city_id: "",title: "",description: "",price: "",area: "",address: "",latitude: 33.88,longitude: 35.5});
+  const [homeProperties, setHomeProperties] = useState({rooms: "",balconies: "",bathrooms: "",garages: "",});
+  const handleLatLng = (lat, lng) =>{setPropertyDetails({...propertyDetails, latitude: lat, longitude: lng})}
   const [imageData, setImageData] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]); 
   const [validationErrors, setValidationErrors] = useState({});
@@ -95,22 +79,8 @@ const AddProperty = () => {
         console.log(response);
         openModal()
         setPropertyType("");
-        setPropertyDetails({
-          city_id: "",
-          title: "",
-          description: "",
-          price: "",
-          area: "",
-          address: "",
-          latitude: "",
-          longitude: "",
-        });
-        setHomeProperties({
-          rooms: "",
-          balconies: "",
-          bathrooms: "",
-          garages: "",
-        });
+        setPropertyDetails({city_id: "",title: "",description: "",price: "",area: "",address: "",latitude: "",longitude: ""});
+        setHomeProperties({rooms: "",balconies: "",bathrooms: "",garages: ""});
         setImageData([]);
         setImagePreviews([]); 
       }
@@ -129,15 +99,7 @@ const AddProperty = () => {
       const reader = new FileReader();
       reader.onload = (e) => {
         base64Images.push(e.target.result);
-        previews.push(
-          <img
-            key={file.name}
-            src={e.target.result}
-            alt={file.name}
-            style={{ maxWidth: "100px", maxHeight: "100px", margin: "4px" }}
-          />
-        );
-
+        previews.push(<img key={file.name} src={e.target.result}alt={file.name}style={{ maxWidth: "100px", maxHeight: "100px", margin: "4px" }}/>);
         if (base64Images.length === files.length) {
           setImageData(base64Images);
           setImagePreviews(previews);
@@ -153,11 +115,7 @@ const AddProperty = () => {
       <div className="max-w-lg ml-20 space-y-4">
         <div className="flex flex-wrap -mx-4 space-y-4">
           <div className="w-full px-4">
-            <select
-              value={propertyType}
-              onChange={(e) => setPropertyType(e.target.value)}
-              className="p-3 border rounded-md border-gray-300 w-full"
-            >
+            <select value={propertyType} onChange={(e) => setPropertyType(e.target.value)}className="p-3 border rounded-md border-gray-300 w-full">
               <option value="">Select Property Type </option>
               <option value="home">Home</option>
               <option value="land">Land</option>
@@ -168,16 +126,10 @@ const AddProperty = () => {
           </div>
           <div className="w-full px-4">
           <label className="block mb-2 text-gray-600">City</label>
-            <select
-              value={propertyDetails.city_id} 
-              onChange={(e) => setPropertyDetails({ ...propertyDetails, city_id: e.target.value })} 
-              className="p-3 border rounded-md border-gray-300 w-full"
-            >
+            <select value={propertyDetails.city_id}onChange={(e) => setPropertyDetails({ ...propertyDetails, city_id: e.target.value })} className="p-3 border rounded-md border-gray-300 w-full">
               <option value="">Select City</option>
               {regions.map((region) => (
-                <option key={region.key} value={region.key}>
-                  {region.name}
-                </option>
+                <option key={region.key} value={region.key}>{region.name}</option>
               ))}
             </select>
             {validationErrors.city_id && (
@@ -186,24 +138,14 @@ const AddProperty = () => {
           </div>
           <div className="w-full px-4">
             <label className="block mb-2 text-gray-600">Title</label>
-            <Input
-              label=""
-              type="text"
-              onChange={(value) => setPropertyDetails({ ...propertyDetails, title: value })}
-              value={propertyDetails.title}
-            />
+            <Input label="" type="text" onChange={(value) => setPropertyDetails({ ...propertyDetails, title: value })} value={propertyDetails.title}/>
             {validationErrors.title && (
               <p className="text-red-400 text-sm">{validationErrors.title}</p>
             )}
           </div>
           <div className="w-full px-4">
             <label className="block mb-2 text-gray-600">Description</label>
-            <Input
-              label=""
-              type="text"
-              onChange={(value) => setPropertyDetails({ ...propertyDetails, description: value })}
-              value={propertyDetails.description}
-            />
+            <Input label=""type="text"onChange={(value) => setPropertyDetails({ ...propertyDetails, description: value })}value={propertyDetails.description}/>
             {validationErrors.description && (
               <p className="text-red-400 text-sm">{validationErrors.description}</p>
             )}
@@ -213,24 +155,14 @@ const AddProperty = () => {
         <div className="flex flex-wrap -mx-4 space-y-4">
           <div className="w-full px-4">
             <label className="block mb-2 text-gray-600">Price</label>
-            <Input
-              label=""
-              type="number"
-              onChange={(value) => setPropertyDetails({ ...propertyDetails, price: value })}
-              value={propertyDetails.price}
-            />
+            <Input label="" type="number"onChange={(value) => setPropertyDetails({ ...propertyDetails, price: value })}value={propertyDetails.price} />
             {validationErrors.price && (
               <p className="text-red-400 text-sm">{validationErrors.price}</p>
             )}
           </div>
           <div className="w-full px-4">
             <label className="block mb-2 text-gray-600">Area</label>
-            <Input
-              label=""
-              type="number"
-              onChange={(value) => setPropertyDetails({ ...propertyDetails, area: value })}
-              value={propertyDetails.area}
-            />
+            <Input label="" type="number"onChange={(value) => setPropertyDetails({ ...propertyDetails, area: value })}value={propertyDetails.area}/>
             {validationErrors.area && (
               <p className="text-red-400 text-sm">{validationErrors.area}</p>
             )}
@@ -240,12 +172,7 @@ const AddProperty = () => {
         <div className="flex flex-wrap -mx-4 space-y-4">
           <div className="w-full px-4">
             <label className="block mb-2 text-gray-600">Address</label>
-            <Input
-              label=""
-              type="text"
-              onChange={(value) => setPropertyDetails({ ...propertyDetails, address: value })}
-              value={propertyDetails.address}
-            />
+            <Input label="" type="text" onChange={(value) => setPropertyDetails({ ...propertyDetails, address: value })}value={propertyDetails.address}/>
             {validationErrors.address && (
               <p className="text-red-400 text-sm">{validationErrors.address}</p>
             )}
@@ -260,48 +187,28 @@ const AddProperty = () => {
           <div className="flex flex-wrap -mx-4 space-y-4">
             <div className="w-full px-4">
               <label className="block mb-2 text-gray-600">Number of Rooms</label>
-              <Input
-                label=""
-                type="number"
-                onChange={(value) => setHomeProperties({ ...homeProperties, rooms: value })}
-                value={homeProperties.rooms}
-              />
+              <Input label="" type="number"onChange={(value) => setHomeProperties({ ...homeProperties, rooms: value })}value={homeProperties.rooms}/>
               {validationErrors.rooms && (
                 <p className="text-red-400 text-sm">{validationErrors.rooms}</p>
               )}
             </div>
             <div className="w-full px-4">
               <label className="block mb-2 text-gray-600">Number of Balconies</label>
-              <Input
-                label=""
-                type="number"
-                onChange={(value) => setHomeProperties({ ...homeProperties, balconies: value })}
-                value={homeProperties.balconies}
-              />
+              <Input label=""type="number"onChange={(value) => setHomeProperties({ ...homeProperties, balconies: value })}value={homeProperties.balconies}/>
               {validationErrors.balconies && (
                 <p className="text-red-400 text-sm">{validationErrors.balconies}</p>
               )}
             </div>
             <div className="w-full px-4">
               <label className="block mb-2 text-gray-600">Number of Bathrooms</label>
-              <Input
-                label=""
-                type="number"
-                onChange={(value) => setHomeProperties({ ...homeProperties, bathrooms: value })}
-                value={homeProperties.bathrooms}
-              />
+              <Input label=""type="number"onChange={(value) => setHomeProperties({ ...homeProperties, bathrooms: value })}value={homeProperties.bathrooms}/>
               {validationErrors.bathrooms && (
                 <p className="text-red-400 text-sm">{validationErrors.bathrooms}</p>
               )}
             </div>
             <div className="w-full px-4">
               <label className="block mb-2 text-gray-600">Number of Garages</label>
-              <Input
-                label=""
-                type="number"
-                onChange={(value) => setHomeProperties({ ...homeProperties, garages: value })}
-                value={homeProperties.garages}
-              />
+              <Input label=""type="number"onChange={(value) => setHomeProperties({ ...homeProperties, garages: value })}value={homeProperties.garages}/>
               {validationErrors.garages && (
                 <p className="text-red-400 text-sm">{validationErrors.garages}</p>
               )}
@@ -312,14 +219,7 @@ const AddProperty = () => {
         <div className="flex flex-wrap -mx-4 space-y-4">
           <div className="w-full px-4">
             <label className="block mb-2 text-gray-600">Upload Images</label>
-            <input
-              label=""
-              type="file"
-              multiple
-              accept="image/*"
-              onChange={handleImageChange}
-              className="p-2 border rounded-md border-gray-300 w-full"
-            />
+            <input label=""type="file"multipleaccept="image/*"onChange={handleImageChange}className="p-2 border rounded-md border-gray-300 w-full"/>
             {validationErrors.images && (
               <p className="text-red-400 text-sm">{validationErrors.images}</p>
             )}
