@@ -11,11 +11,13 @@ import SideNav from './components/SideNav';
 import Profile from './pages/Profile';
 import AddProperty from './pages/AddProperty';
 import UserProperties from './pages/UserProperties';
+import GoogleCallback from "./pages/GoogleCallback";
 import Meetings from './pages/Meetings';
 
 function App() {
   return (
     <Routes>
+      <Route path="auth/google" element={<GoogleCallback />}></Route>
       <Route path='auth' element={<Authentication />} />
       <Route path='/' element={<Nav />}>
         <Route index element={<Landing />} />
