@@ -20,7 +20,7 @@ const Nav = () => {
       try {
         const response = await sendRequest({
           method: 'GET',
-          route: 'guest/profile', 
+          route: 'user/profile', 
         });
         if (response.status === 'Success' && response.authenticated) {
           setAuthenticated(true); 
