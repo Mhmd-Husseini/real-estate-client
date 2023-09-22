@@ -196,7 +196,7 @@ const AddProperty = () => {
           <div>
             <div className="w-full">
               <label className="block mb-2 text-gray-600">Upload Images</label>
-              <input label=""type="file"multipleaccept="image/*"onChange={handleImageChange}className="p-2 border rounded-md border-gray-300 w-full"/>
+              <input label="" type="file" multiple accept="image/*" onChange={handleImageChange} className="p-2 border rounded-md border-gray-300 w-full"/>
               {validationErrors.images && (<p className="text-red-400 text-sm">{validationErrors.images}</p>)}
             </div>
           </div>
