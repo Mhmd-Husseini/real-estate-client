@@ -52,10 +52,7 @@ const SellerCalendar = ({ seller, booked }) => {
         }
     
         try {
-          const response = await sendRequest({
-            method: "POST",
-            route: `user/bookMeeting`,
-            body: {
+          const response = await sendRequest({method: "POST",route: `user/bookMeeting`,body: {
               seller_id: seller.id,
               property_id: property_id,
               date: selectedDate.toISOString(), 
@@ -89,15 +86,8 @@ const SellerCalendar = ({ seller, booked }) => {
 
             return (
               <li key={hour} className="flex items-center">
-                <input
-                  type="radio"
-                  id={hour}
-                  name="selectedHour"
-                  value={hour}
-                  checked={selectedDate && selectedDate.getHours() === parseInt(hour.split(':')[0])}
-                  onChange={() => handleHourChange(hour)}
-                  className="mr-2"
-                />
+                <input type="radio" id={hour} name="selectedHour" value={hour}checked={selectedDate && selectedDate.getHours() === parseInt(hour.split(':')[0])}
+                       onChange={() => handleHourChange(hour)} className="mr-2"/>
                 <label htmlFor={hour}>{hour}</label>
               </li>
             );
@@ -120,10 +110,7 @@ const SellerCalendar = ({ seller, booked }) => {
   return (
     <div className="w-full">
       <div>
-        <Calendar
-          onChange={handleDateChange}
-          value={selectedDate}
-          tileClassName={({ date }) => {
+        <Calendar onChange={handleDateChange} value={selectedDate} tileClassName={({ date }) => {
             const isAvailable = isDateAvailable(date);
             return isAvailable ? 'custom-available-style' : 'custom-unavailable-style';
           }}
