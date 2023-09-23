@@ -16,24 +16,14 @@ const Nav = () => {
   };
 
   useEffect(() => {
-    async function checkAuthentication() {
-      try {
-        const response = await sendRequest({
-          method: 'GET',
-          route: 'user/profile', 
-        });
-        if (response.status === 'Success' && response.authenticated) {
-          setAuthenticated(true); 
-          setUser(response.user);
-        } else {
-          setAuthenticated(false);
-         }
-        } catch (error) {
-        console.error('Error checking authentication:', error);
-      }
+    const token = localStorage.getItem('token'); 
+    if (token) {
+      setAuthenticated(true);
+    } else {
+      setAuthenticated(false);
     }
-    checkAuthentication();
   }, []);
+  
 
   return (
     <div>
