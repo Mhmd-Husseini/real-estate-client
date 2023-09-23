@@ -11,18 +11,36 @@ const Lands = () => {
 
   const [searchParams, setSearchParams] = useState({city_name: '', max_price: 40000000000, min_area: 0, type:"land" });
   const [properties, setProperties] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [hasMoreItems, setHasMoreItems] = useState(true);
+
+  const handleSeeMore = () => {
+    setPage(page + 1);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await sendRequest({ method: "GET", route: "guest/properties", params: searchParams });
-        setProperties(response.data);
+        const response = await sendRequest({method: "GET",route: "guest/properties",params: { ...searchParams, page }});
+        if (response.data.length === 0) {
+          setHasMoreItems(false); 
+        }
+        if (page === 1) {
+          setProperties(response.data);
+        } else {
+          setProperties([...properties, ...response.data]);
+        }
+
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
+        setIsLoading(false);
       }
     };
+
     fetchData();
-  }, [searchParams]); 
+  }, [searchParams, page]); 
 
   return (
     <div className='mx-auto max-w-screen-xl'>
@@ -41,6 +59,18 @@ const Lands = () => {
           <PropertyCard key={property.id} property={property} />
         ))}
       </div>
+      {isLoading && <p>Loading...</p>}
+      {!isLoading && (
+      <div className="text-center mt-4">
+      {hasMoreItems ? (
+        <button className="btn btn-primary text-primary font-bold text-md my-10" onClick={handleSeeMore}>
+          See More
+        </button>
+      ) : (
+        <p className="btn btn-primary text-primary font-bold text-md my-10">No more properties to show</p>
+      )}
+      </div>
+      )}
     </div>
   );
 };
