@@ -3,8 +3,10 @@ import { sendRequest } from './../../config/request';
 import Broker from '../../hero-img.png'
 import ButtonSm from "../../components/ButtonSm";
 import Modal from "../../components/Modal";
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
+    const navigate = useNavigate();
     const [originalUser, setOriginalUser] = useState(null); 
     const [user, setUser] = useState({name: '',email: '',password: '',phone: ''});
     const [editable, setEditable] = useState(false);
@@ -90,6 +92,7 @@ function Profile() {
                 }
             } catch (error) {
                 console.error('Error fetching user profile:', error);
+                navigate("/auth");
             }
         };
         fetchUserProfile();
