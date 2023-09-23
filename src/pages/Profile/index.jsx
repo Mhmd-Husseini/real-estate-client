@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { sendRequest } from './../../config/request'; 
 import Broker from '../../hero-img.png'
 import ButtonSm from "../../components/ButtonSm";
+import Modal from "../../components/Modal";
 
 function Profile() {
     const [originalUser, setOriginalUser] = useState(null); 
-    const [user, setUser] = useState({
-      name: '',
-      email: '',
-      password: '',
-      phone: '',
-    });
+    const [user, setUser] = useState({name: '',email: '',password: '',phone: ''});
     const [editable, setEditable] = useState(false);
     const [changesMade, setChangesMade] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const openModal = () => {
+      setShowModal(true);
+    };
+    const closeModal = () => {
+      setShowModal(false);
+    };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -60,10 +63,11 @@ function Profile() {
         return;
       }
         try {
-            const response = await sendRequest({method: 'POST',route: 'user/updateUser',body: user,});
+            const response = await sendRequest({method: 'POST',route: 'user/updateUser',body: user});
             if (response.status === 'Success') {
                 setEditable(false);
                 setChangesMade(false);
+                openModal()
             } else {
                 console.error('Error updating profile');
             }
@@ -131,7 +135,8 @@ function Profile() {
                   <ButtonSm buttonText="Edit" onClick={handleEditProfile} />
               )}
           </div>
-        </div> 
+        </div>
+        {showModal && (<Modal message="Profile Updated Successfuly" onClose={closeModal} />)} 
       </div>
     );
 }
