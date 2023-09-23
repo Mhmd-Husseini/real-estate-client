@@ -15,9 +15,9 @@ const SellerCalendar = ({ seller, booked }) => {
   const [showModal, setShowModal] = useState(false);
   const openModal = () => {setShowModal(true);};
   const closeModal = () => {setShowModal(false);};
+
   const isDateAvailable = (date) => {
     const dayName = date.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
-
     if (availableTime[dayName] && availableTime[dayName].start_time && availableTime[dayName].end_time) {
       return true;
     }
@@ -30,7 +30,7 @@ const SellerCalendar = ({ seller, booked }) => {
 
   const renderAvailableTimes = () => {
     if (!selectedDate || !isDateAvailable(selectedDate)) {
-      return <p className="text-red-500">No available slots for the selected date.</p>;
+      return <p className="text-red-500">No available slots for the selected date</p>;
     }
 
     const dayName = selectedDate.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
