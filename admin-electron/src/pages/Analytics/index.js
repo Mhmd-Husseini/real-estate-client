@@ -139,6 +139,10 @@ const AnalyticsPage = () => {
         <h2 className="text-xl font-semibold mb-2">Land Average Prices</h2>
         <Bar data={landAvgPricesData} />
       </div>
+      <div>
+        <h2 className="text-xl font-semibold mb-2">Home Average Prices</h2>
+        <Bar data={homeAvgPricesData} />
+      </div>
     </div>
   );
 };
