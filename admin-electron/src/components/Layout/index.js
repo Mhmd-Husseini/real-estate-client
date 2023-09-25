@@ -1,8 +1,13 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import logo from '../../logo.svg'
 
 const Layout = () => {
+  const navigate= useNavigate();
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/")  
+  };
   return (
     <div className="flex min-h-screen">
       <div className="bg-secondary text-white w-2/12 min-h-screen">
@@ -16,7 +21,7 @@ const Layout = () => {
               <NavLink to="users" className="block text-white hover:bg-primary px-4 my-4 py-2 rounded" >Users</NavLink>
             </li>
             <li>
-              <NavLink to="/admin/analytics" className="block text-white hover:bg-primary px-4 my-4 py-2 rounded">Analytics</NavLink>
+              <NavLink to="analytics" className="block text-white hover:bg-primary px-4 my-4 py-2 rounded">Analytics</NavLink>
             </li>
             </ul>
         </div>
@@ -25,7 +30,7 @@ const Layout = () => {
       <div className="flex-1 p-5">
         <div className="mb-4 flex justify-between mx-7">
           <img src={logo} alt="Logo" className="w-20 h-20"/>
-          <button className="text-lg text-secondary font-semibold mt-2">Logout</button>
+          <button className="text-lg text-secondary font-semibold mt-2" onClick={handleLogout}>Logout</button>
         </div>
         <div className="flex-1 justify-start msx-7 p-4 10/12"><Outlet /></div>
       </div>
