@@ -33,7 +33,28 @@ function Users() {
     }
   };
 
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
+  const deleteUser = async (id) => {
+    try {
+      const response = await sendRequest({ method: "DELETE", route: `user/delete/${id}` });
+
+      if (response) {
+        setShowModal(true);
+        fetchUsers();
+      } else {
+        console.error("Error deleting user");
+      }
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <Card className="h-full w-full">
