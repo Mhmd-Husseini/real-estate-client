@@ -127,6 +127,10 @@ const AnalyticsPage = () => {
           <Pie data={pieChartData2} />
         </div>
       </div>
+      <div className="mb-6">
+        <h2 className="text-xl font-semibold mb-2">Weekly Meeting Counts</h2>
+        <Line data={lineChartData} />
+      </div>
     </div>
   );
 };
