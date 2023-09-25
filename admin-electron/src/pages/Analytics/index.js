@@ -117,10 +117,16 @@ const AnalyticsPage = () => {
         <h2 className="text-xl font-semibold mb-2">Properties by City</h2>
         <Bar data={barChartData} />
       </div>
-      <div className="mb-6 flex-1 max-w-lg">
+      <div className='flex w-full'>
+        <div className="mb-6 flex-1 max-w-lg">
           <h2 className="text-xl font-semibold mb-2">User Types</h2>
           <Pie data={pieChartData} />
         </div>
+        <div className="mb-6 flex-1 max-w-lg">
+          <h2 className="text-xl font-semibold mb-2 ">Number of Properties in Cities</h2>
+          <Pie data={pieChartData2} />
+        </div>
+      </div>
     </div>
   );
 };
