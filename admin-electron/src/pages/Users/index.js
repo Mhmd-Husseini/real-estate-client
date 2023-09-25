@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardHeader, Typography, CardBody, IconButton, Tooltip, Input } from "@material-tailwind/react";
-import { TrashIcon, PencilIcon } from "@heroicons/react/24/solid";
+import { TrashIcon } from "@heroicons/react/24/solid";
 import { sendRequest } from './../../config/request'; 
 import Modal from "../../components/Modal";
+import { useNavigate } from 'react-router-dom';
 
 const TABLE_HEAD = ["ID", "Name", "Email", "Phone", "User Type", "Delete"];
 
 function Users() {
+  const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [showModal, setShowModal] = useState(false); 
 
@@ -29,6 +31,7 @@ function Users() {
         console.error("Error fetching user data");
       }
     } catch (error) {
+      navigate("/");
       console.error("Error fetching user data:", error);
     }
   };
@@ -57,7 +60,7 @@ function Users() {
   };
 
   return (
-    <Card className="h-full w-full">
+    <Card className="h-full w-full mx-5">
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
           <div>

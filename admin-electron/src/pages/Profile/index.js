@@ -20,10 +20,7 @@ function Profile() {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setUser((prevUser) => ({
-            ...prevUser,
-            [name]: value,
-        }));
+        setUser((prevUser) => ({...prevUser, [name]: value,}));
         setChangesMade(true);
     };
 
@@ -84,8 +81,8 @@ function Profile() {
                     setOriginalUser(response); 
                     setUser(response);
             } catch (error) {
+                navigate("/");
                 console.error('Error fetching user profile:', error);
-                navigate("/auth");
             }
         };
         fetchUserProfile();
