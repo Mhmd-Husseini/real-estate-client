@@ -60,16 +60,12 @@ function Users() {
   };
 
   return (
-    <Card className="h-full w-full mx-5">
+    <Card className="h-full w-full mx-1">
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
-          <div>
-            <Typography variant="h5" color="blue-gray">
-              User List
-            </Typography>
-            <Typography color="gray" className="mt-1 font-normal">
-              List of users
-            </Typography>
+          <div className='mb-10'>
+            <h2 className="text-3xl text-gray-800 font-medium leading-9">Analytics and Statistics </h2>
+            <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mt-3"></div>
           </div>
           <div className="flex w-full shrink-0 gap-2 md:w-max">
             <div className="w-full md:w-72">
@@ -78,7 +74,7 @@ function Users() {
           </div>
         </div>
       </CardHeader>
-      <CardBody className="px-0">
+      <CardBody className="mx-4 px-0">
         <table className="w-full min-w-max table-auto text-left">
           <thead>
             <tr>

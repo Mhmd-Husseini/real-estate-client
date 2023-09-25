@@ -109,7 +109,7 @@ const AnalyticsPage = () => {
 
   return (
     <div className="p-4">
-      <div className='mx-3'>
+      <div className=''>
         <h2 className="text-3xl text-gray-800 font-medium leading-9">Analytics and Statistics </h2>
         <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mt-3"></div>
       </div>
