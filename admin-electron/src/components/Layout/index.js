@@ -5,21 +5,21 @@ import logo from '../../logo.svg'
 const Layout = () => {
   return (
     <div className="flex min-h-screen">
-      <div className="bg-primary text-white w-1/6 min-h-screen">
+      <div className="bg-secondary text-white w-1/6 min-h-screen">
         <div className="p-4">
           <div className="text-3xl font-bold my-7 mb-16">Dashboard</div>
             <ul className="space-y-2 text-xl">
             <li>
-              <NavLink to="/admin/" className="block text-white hover:bg-secondary px-4 py-2 rounded" activeClassName="bg-secondary">Profile</NavLink>
+              <NavLink to="" className="block text-white hover:bg-secondary px-4 py-2 rounded">Profile</NavLink>
             </li>
             <li>
-              <NavLink to="/admin/users" className="block text-white hover:bg-secondary px-4 py-2 rounded" activeClassName="bg-secondary">Users</NavLink>
+              <NavLink to="/admin/users" className="block text-white hover:bg-secondary px-4 py-2 rounded" >Users</NavLink>
             </li>
             <li>
-              <NavLink to="/admin/authors" className="block text-white hover:bg-secondary px-4 py-2 rounded" activeClassName="bg-secondary">Authors</NavLink>
+              <NavLink to="/admin/authors" className="block text-white hover:bg-secondary px-4 py-2 rounded">Authors</NavLink>
             </li>
             <li>
-              <NavLink to="/admin/analytics" className="block text-white hover:bg-secondary px-4 py-2 rounded" activeClassName="bg-secondary">Analytics</NavLink>
+              <NavLink to="/admin/analytics" className="block text-white hover:bg-secondary px-4 py-2 rounded">Analytics</NavLink>
             </li>
             </ul>
         </div>
