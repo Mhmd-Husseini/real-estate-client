@@ -84,14 +84,9 @@ function Users() {
             <h2 className="text-3xl text-gray-800 font-medium leading-9">User Management </h2>
             <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mt-3"></div>
           </div>
-          <div className="flex w-full shrink-0 gap-2 md:w-max">
-            <div className="w-full md:w-72">
-              <Input
-                label="Search"
-                placeholder="Search by name, email, phone, or user type"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
+          <div className=" w-full shrink-0 mr-7 md:w-max">
+            <div className="w-full p-10 md:w-72">
+              <Input className="w-full p-4 md:w-72" placeholder="Search by name, email, phone, or type" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
             </div>
           </div>
         </div>
