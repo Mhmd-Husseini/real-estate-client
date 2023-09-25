@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { sendRequest } from './../../config/request'; 
-import Broker from '../../hero-img.png'
 import ButtonSm from "../../components/ButtonSm";
 import Modal from "../../components/Modal";
 import { useNavigate } from 'react-router-dom';
@@ -97,12 +96,12 @@ function Profile() {
 
     return (
       <div className='w-full'>
-        <div className='ml-20'>
+        <div className='mx-7'>
           <h2 className="text-3xl text-gray-800 font-medium leading-9">Your Profile Info</h2>
           <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mb-5 mt-3"></div>
         </div>
-        <div className='flex flex-row-reverse w-full'>
-          <div className="container mx-auto ml-20 max-w-lg">
+        <div className='flex justify-start w-full'>
+          <div className="container mr-auto mx-7 max-w-lg">
               <div className="mb-4">
                   <label className="block mb-2">Name</label>
                   <input type="text" name="name" value={user.name} onChange={handleInputChange} disabled={!editable} className="w-full rounded-md p-3 border border-gray-300"/>
