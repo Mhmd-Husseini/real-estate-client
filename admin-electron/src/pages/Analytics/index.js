@@ -111,36 +111,36 @@ const AnalyticsPage = () => {
     <div className="p-4">
       <div className='mx-3'>
         <h2 className="text-3xl text-gray-800 font-medium leading-9">Analytics and Statistics </h2>
-        <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mb-8 mt-3"></div>
+        <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mt-3"></div>
       </div>
-      <div className="mb-6 max-w-3xl">
+      <div className="mb-20 mt-12 w-full max-w-4xl">
         <h2 className="text-xl font-semibold mb-2">Properties by City</h2>
         <Bar data={barChartData} />
       </div>
       <div className='flex w-full'>
-        <div className="mb-6 flex-1 max-w-lg">
-          <h2 className="text-xl font-semibold mb-2">User Types</h2>
+        <div className="mb-6 flex-1 max-w-md">
+          <h2 className="text-xl font-semibold mb-5">User Types</h2>
           <Pie data={pieChartData} />
         </div>
-        <div className="mb-6 flex-1 max-w-lg">
-          <h2 className="text-xl font-semibold mb-2 ">Number of Properties in Cities</h2>
+        <div className="mb-20 flex-1 max-w-md">
+          <h2 className="text-xl font-semibold mb-5 ">Number of Properties in Cities</h2>
           <Pie data={pieChartData2} />
         </div>
       </div>
-      <div className="mb-6">
+      <div className="mb-20 w-full max-w-4xl">
         <h2 className="text-xl font-semibold mb-2">Weekly Meeting Counts</h2>
         <Line data={lineChartData} />
       </div>
-      <div className="mb-6">
+      <div className="mb-20 w-full max-w-4xl">
         <h2 className="text-xl font-semibold mb-2">Users Count by Week</h2>
         <Line data={usersCountByWeekData} />
       </div>
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold mb-2">Land Average Prices</h2>
+      <div className="mb-20 w-full max-w-4xl">
+        <h2 className="text-xl font-semibold mb-2">Land Average Prices per 100m2</h2>
         <Bar data={landAvgPricesData} />
       </div>
-      <div>
-        <h2 className="text-xl font-semibold mb-2">Home Average Prices</h2>
+      <div className="mb-20 w-full max-w-4xl">
+        <h2 className="text-xl font-semibold">Home Average Prices per 100m2</h2>
         <Bar data={homeAvgPricesData} />
       </div>
     </div>
