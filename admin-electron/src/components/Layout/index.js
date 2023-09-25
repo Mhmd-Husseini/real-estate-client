@@ -15,13 +15,13 @@ const Layout = () => {
           <div className="text-3xl font-bold mt-6 mb-16">Dashboard</div>
             <ul className="space-y-2 text-xl">
             <li>
-              <NavLink to="" className="block text-white hover:bg-primary px-4 py-2 my-4 rounded">Profile</NavLink>
+              <NavLink to="" className="block text-white px-4 py-2 my-4 rounded transition-all duration-300 focus:ring-2 focus:ring-primary focus:outline-none hover:underline hover:bg-primary hover:text-secondary">Profile</NavLink>
             </li>
             <li>
-              <NavLink to="users" className="block text-white hover:bg-primary px-4 my-4 py-2 rounded" >Users</NavLink>
+              <NavLink to="users" className="block text-white px-4 py-2 my-4 rounded transition-all duration-300 focus:ring-2 focus:ring-primary focus:outline-none hover:underline hover:bg-primary hover:text-secondary" >Users</NavLink>
             </li>
             <li>
-              <NavLink to="analytics" className="block text-white hover:bg-primary px-4 my-4 py-2 rounded">Analytics</NavLink>
+              <NavLink to="analytics" className="block text-white px-4 py-2 my-4 rounded transition-all duration-300 focus:ring-2 focus:ring-primary focus:outline-none hover:underline hover:bg-primary hover:text-secondary">Analytics</NavLink>
             </li>
             </ul>
         </div>
