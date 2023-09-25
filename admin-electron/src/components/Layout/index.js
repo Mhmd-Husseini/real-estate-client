@@ -7,7 +7,7 @@ const Layout = () => {
     <div className="flex min-h-screen">
       <div className="bg-secondary text-white w-1/6 min-h-screen">
         <div className="p-4">
-          <div className="text-3xl font-bold my-7 mb-16">Dashboard</div>
+          <div className="text-3xl font-bold my-7 mb-20">Dashboard</div>
             <ul className="space-y-2 text-xl">
             <li>
               <NavLink to="" className="block text-white hover:bg-secondary px-4 py-2 rounded">Profile</NavLink>
