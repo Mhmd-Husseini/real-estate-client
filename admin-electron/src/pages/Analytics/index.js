@@ -135,6 +135,10 @@ const AnalyticsPage = () => {
         <h2 className="text-xl font-semibold mb-2">Users Count by Week</h2>
         <Line data={usersCountByWeekData} />
       </div>
+      <div className="mb-6">
+        <h2 className="text-xl font-semibold mb-2">Land Average Prices</h2>
+        <Bar data={landAvgPricesData} />
+      </div>
     </div>
   );
 };
