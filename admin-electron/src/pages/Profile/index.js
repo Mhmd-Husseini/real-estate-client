@@ -47,36 +47,36 @@ function Profile() {
       return !password || password.length >= 8;
     };
 
-    // const handleSaveProfile = async () => {
-    //   if (!user.name) {
-    //     setError("Name is required");
-    //     return;
-    //   }
-    //   if (!validateEmail(user.email)) {
-    //     setError("Invalid Email Address");
-    //     return;
-    //   }
-    //   if (!validatePassword(user.password)) {
-    //     setError("Password must be at least 8 characters long");
-    //     return;
-    //   }
-    //   if (!user.phone) {
-    //     setError("Phone is required");
-    //     return;
-    //   }
-    //     try {
-    //         const response = await sendRequest({method: 'POST',route: 'user/updateUser',body: user});
-    //         if (response.status === 'Success') {
-    //             setEditable(false);
-    //             setChangesMade(false);
-    //             openModal()
-    //         } else {
-    //             console.error('Error updating profile');
-    //         }
-    //     } catch (error) {
-    //         console.error('Error updating profile:', error);
-    //     }
-    // };
+    const handleSaveProfile = async () => {
+      if (!user.name) {
+        setError("Name is required");
+        return;
+      }
+      if (!validateEmail(user.email)) {
+        setError("Invalid Email Address");
+        return;
+      }
+      if (!validatePassword(user.password)) {
+        setError("Password must be at least 8 characters long");
+        return;
+      }
+      if (!user.phone) {
+        setError("Phone is required");
+        return;
+      }
+        try {
+            const response = await sendRequest({method: 'PUT',route: '/updateAdmin',body: user});
+            if (response.status === 'success') {
+                setEditable(false);
+                setChangesMade(false);
+                openModal()
+            } else {
+                console.error('Error updating profile');
+            }
+        } catch (error) {
+            console.error('Error updating profile:', error);
+        }
+    };
 
     useEffect(() => {
         const fetchUserProfile = async () => {
@@ -91,7 +91,6 @@ function Profile() {
         };
         fetchUserProfile();
     }, []);
-    console.log(user)
     if (!user) {
         return <div></div>;
     }
