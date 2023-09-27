@@ -43,11 +43,11 @@
 > Using the wireframes and mockups as a guide, we implemented the Lebanon RealEstate Insights website with the following features:
 
 ### User Screens (Web)
-| Login screen  | Register screen |  Landing screen |
+| Register screen  | Landing screen |  Trends screen |
 | ---| ---| ---|
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-| Home screen  | Menu Screen | Order Screen |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| ![Register](./readme/demo/web-pages/register.png) | ![Landing](./readme/demo/web-pages/landing.png) | ![fsdaf](./readme/demo/web-pages/properties.png) |
+| Properties screen  | Property Screen | Add Screen |
+| ![Properties](./readme/demo/web-pages/properties.png) | ![fsdaf](./readme/demo/web-pages/property.png) | ![fsdaf](./readme/demo/web-pages/add.png) |
 
 ### Admin Screens (Desktop App)
 | Login screen  | Register screen |  Landing screen |
