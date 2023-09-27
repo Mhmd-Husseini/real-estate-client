@@ -7,15 +7,16 @@
 
 > A website app that serves as a real estate market, making it easier for sellers, buyers and anyone interested in real estate investement to buy, sell and get insights to the Lebanese market.
 >
-> Lebanon RealEstate Insights is your gateway to the Lebanese real estate market. Whether you're looking to buy your dream property, sell your current one, or gain valuable insights into the market trends, we've got you covered. This offers a vast selection of properties, expert guidance, and a secure environment. 
+> In additon to a desktop app designed to give administrators full control over the website and provide in-depth analytics. 
+>
+> Lebanon RealEstate Insights is your gateway to the Lebanese real estate market. Whether you're looking to buy your dream property, sell your current one, or gain valuable insights into the market trends, we've got you covered. 
 
 ### User Stories
-- As a user, I want to browse property listings on the website, so I can easily find properties in Lebanon that match my preferences and requirements.
-- As a user, I want the ability to customize my property search criteria, such as location, price, and property type, so I can narrow down my options to the most suitable properties.
-- As a user, I want access to detailed property information and market insights, so I can make informed decisions about buying or investing in properties in Lebanon.
+- As a user, I want to browse property listings with the ability to customize my property search criteria, such as location, price, and property type, so I can narrow down my options to the most suitable properties.
 - As a user, I want to post my property on the website and customize the listing details, including property features and photos, to attract potential buyers and showcase my property effectively.
-- As a user, I want access to comprehensive market data, including historical price trends, rental yields, to guide my investment strategies in Lebanon.
-- As a user, I want the website to facilitate communication with potential buyers, allowing them to schedule meetings with me.
+- As a user, I want access to comprehensive market data, including historical price trends, articles, so I get insights to investment in Lebanon.
+- As a user, I want the to schedule meetings with sellers or buyers, allowing them to schedule meetings with me.
+- As an admin, I want to browse website data and also access comprehensive analytics, so I can manage the website efficiently.
 
 <br><br>
 
