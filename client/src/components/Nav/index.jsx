@@ -8,7 +8,6 @@ const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [authenticated, setAuthenticated] = useState(false);
-  const [user, setUser] = useState();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSignInClick = () => {
@@ -87,7 +86,7 @@ const Nav = () => {
           </div>
         </div>
       )}
-      <Outlet user={user} />
+      <Outlet/>
     </div>
   );
 };
