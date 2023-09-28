@@ -52,10 +52,10 @@ const Meeting = () => {
 
   return (
     <div className="rounded-lg mt-10">
-      <PeriodMeetings title="Past Meetings" meetings={pastMeetings} formatDate={formatDate} />
-      <PeriodMeetings title="Today's Meetings" meetings={todayMeetings} formatDate={formatDate} />
-      <PeriodMeetings title="Tomorrow's Meetings" meetings={tomorrowMeetings} formatDate={formatDate} />
-      <PeriodMeetings title="Later Meetings" meetings={laterMeetings} formatDate={formatDate} />
+      <PeriodMeetings title="Past " meetings={pastMeetings} formatDate={formatDate} />
+      <PeriodMeetings title="Today's " meetings={todayMeetings} formatDate={formatDate} />
+      <PeriodMeetings title="Tomorrow's " meetings={tomorrowMeetings} formatDate={formatDate} />
+      <PeriodMeetings title="Later " meetings={laterMeetings} formatDate={formatDate} />
     </div>
   );
 };
