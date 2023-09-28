@@ -111,7 +111,7 @@ const AddProperty = () => {
 
   return (
     <div>
-      <div className="max-w-lg ml-20 space-y-4 mb-10">
+      <div className="max-w-lg md:ml-20 space-y-4 mb-10">
         <div>
           <h2 className="text-3xl text-gray-800 font-medium leading-9">Add Your Property</h2>
           <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mb-5 mt-3"></div>
@@ -119,7 +119,7 @@ const AddProperty = () => {
       </div>
       <div className="flex flex-row-reverse gap-20">
         <div className="hidden lg:block"> <img src={Broker}></img> </div> 
-        <div className="max-w-lg ml-20 space-y-4">
+        <div className="max-w-lg md:ml-20 space-y-4">
           <div className="flex flex-wrap space-y-4">
             <div className="w-full ">
               <select value={propertyType} onChange={(e) => setPropertyType(e.target.value)}className="p-3 border rounded-md border-gray-300 w-full">
