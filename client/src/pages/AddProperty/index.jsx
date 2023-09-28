@@ -118,7 +118,7 @@ const AddProperty = () => {
         </div>
       </div>
       <div className="flex flex-row-reverse gap-20">
-        <div> <img src={Broker}></img> </div> 
+        <div className="hidden lg:block"> <img src={Broker}></img> </div> 
         <div className="max-w-lg ml-20 space-y-4">
           <div className="flex flex-wrap space-y-4">
             <div className="w-full ">
