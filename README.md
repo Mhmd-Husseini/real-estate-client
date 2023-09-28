@@ -12,6 +12,7 @@
 > Lebanon RealEstate Insights is your gateway to the Lebanese real estate market. Whether you're looking to buy your dream property, sell your current one, or gain valuable insights into the market trends, we've got you covered. 
 
 ### User Stories
+- As a user, I want to signup and signin with my google account, so I can easily register and access the website's features.
 - As a user, I want to browse property listings with the ability to customize my property search criteria, such as location, price, and property type, so I can narrow down my options to the most suitable properties.
 - As a user, I want to post my property on the website and customize the listing details, including property features and photos, to attract potential buyers and showcase my property effectively.
 - As a user, I want access to comprehensive market data, including historical price trends, articles, so I get insights to investment in Lebanon.
@@ -46,7 +47,7 @@
 | Landing screen  | Properties screen |  Property screen |
 | ---| ---| ---|
 | ![Landing](./readme/demo/web-pages/landing.png) | ![Properties](./readme/demo/web-pages/properties.png) | ![Property](./readme/demo/web-pages/property.png) |
-| Add Property screen  | Property Screen | Add Screen |
+| Add Property screen  | Property Screen | Trends Screen |
 | ![Add](./readme/demo/web-pages/add.png) | ![Meetings](./readme/demo/web-pages/meetings.png) | ![fsdaf](./readme/demo/web-pages/trends.png) |
 
 
