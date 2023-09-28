@@ -40,7 +40,7 @@ const Trends = () => {
   }, [data]);
 
   return (
-    <div className="mx-auto max-w-screen-xl my-8">
+    <div className="md:mx-auto max-w-screen-xl my-8 mx-5">
       <div className='flex flex-col justify-between items-start max-w-3xl mt-8'>
         <h1 className='font-bold text-3xl mb-2 text-gray-800'>
           Market Trends and Analysis
