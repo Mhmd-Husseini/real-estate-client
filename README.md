@@ -28,12 +28,12 @@
 ### Wireframes
 | Landing Page  | Landing Page |  Properties Page |
 | ---| ---| ---|
-| ![Landing](./readme/demo/Landing1.png) | ![Landing](./readme/demo/Landing2.png) | ![Properties](./readme/demo/Properties.png) |
+| ![Landing](./readme/demo/figma/Landing1.png) | ![Landing](./readme/demo/figma/Landing2.png) | ![Properties](./readme/demo/figma/Properties.png) |
 
 ### Mockups
 | Trends  | Property Details | Dashboard |
 | ---| ---| ---|
-| ![Trends](./readme/demo/Trends.png) | ![Details](./readme/demo/PropertyDetails.png) | ![Dashboad](./readme/demo/Dashboard.png) |
+| ![Trends](./readme/demo/figma/Trends.png) | ![Details](./readme/demo/figma/PropertyDetails.png) | ![Dashboad](./readme/demo/figma/Dashboard.png) |
 
 <br><br>
 
@@ -75,11 +75,11 @@ React is a free and open-source front-end JavaScript library for building user i
 <!-- How to run -->
 <img src="./readme/title6.svg"/>
 
-> To set up Lebanon RealEstate Insights locally, follow these steps:
+> To set up Lebanon RealEstate Insights Website locally, follow these steps:
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Before you begin, ensure you have met the following requirements for the website:
 * npm
   ```sh
   npm install npm@latest -g
@@ -87,20 +87,51 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+_Follow these steps to set up the Lebanon Real Estate Insights website (React frontend and Laravel backend)._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Open your XAMPP control panel and start Apache and MySQL.
+2. Frontend Setup:
+   - Clone this repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/Mhmd-Husseini/real-estate-website-frontend.git
    ```
-3. Install NPM packages
+   - Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Backend Setup:
+   - Clone the backend repo
+   ```sh
+   git clone https://github.com/Mhmd-Husseini/real-estate-website-backend.git
    ```
-
-Now, you should be able to run Coffee Express locally and explore its features.
+   - Install composer packages
+   ```sh
+   composer install
+   ```
+4. Add Configuration:
+   - Rename .env.example to .env.
+   - Add your Google ID and key and specify your database name in the .env file:
+   ```sh
+   DB_DATABASE=YOUR_DATABASE_NAME
+   DB_USERNAME=
+   DB_PASSWORD=
+   GOOGLE_CLIENT_ID=
+   GOOGLE_CLIENT_SECRET=
+   GOOGLE_REDIRECT_URI=http://localhost:3000/auth/google
+   ```
+   - Run the following commands:
+   ```sh
+   php artisan key:generate
+   php artisan key:generate
+   php artisan jwt:secret
+   ```
+5. Start the Website App:
+   - Start the Laravel backend server (in the server-laravel directory):
+     ```sh
+     php artisan serve
+     ```
+   - Start the Vite development server for the frontend (in the client directory):
+     ```sh
+     npm start
+     ```
+Now, you should be able to run the website locally and explore its features.
