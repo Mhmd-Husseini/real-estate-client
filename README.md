@@ -52,9 +52,8 @@
 ### Admin Screens (Desktop App)
 | Login screen  | Register screen |  Landing screen |
 | ---| ---| ---|
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-| Home screen  | Menu Screen | Order Screen |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| ![Profile](./readme/demo/admin/profile.png) | ![Users](./readme/demo/admin/users.png) | ![analytics](./readme/demo/admin/analytics.png) |
+
 
 <br><br>
 
