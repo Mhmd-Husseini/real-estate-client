@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTachometerAlt, faUser, faHome, faBuilding, faCalendar, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'; 
 import { sendRequest } from '../../config/request'; 
@@ -8,11 +8,7 @@ const SideNav = () => {
   const navigate = useNavigate();
   const logout = async () => {
     try {
-      await sendRequest({
-        method: "POST",
-        route: "user/logout", 
-        includeHeaders: true, 
-      });
+      await sendRequest({method: "POST",route: "user/logout", includeHeaders: true});
         localStorage.removeItem("token");
         navigate("/auth");
     } catch (error) {
@@ -20,8 +16,8 @@ const SideNav = () => {
     }
   };
   return (
-    <div className="flex p-4 m-5">
-      <div>
+    <div className="flex flex-col md:flex-row p-4 m-5">
+      <div className='mb-10'>
         <div className='text-white text-xl font-semibold rounded-md bg-primary py-2 px-6'>
             <div className='flex flex-nowrap items-center'> <p>Dashboard</p> <FontAwesomeIcon icon={faTachometerAlt} className='ml-3'/> </div>
         </div>
