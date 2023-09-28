@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { sendRequest } from "../../config/request";
 import ButtonSm from '../../components/ButtonSm';
-import Meeting from '../../components/Meeting';
+import Meetings from '../../components/Meetings';
 import Modal from "../../components/Modal";
 
-const Meetings = () => {
+const Schedule = () => {
   const [availability, setAvailability] = useState({sunday: { start_time: '', end_time: '' },monday: { start_time: '', end_time: '' },tuesday: { start_time: '', end_time: '' },
     wednesday: { start_time: '', end_time: '' },thursday: { start_time: '', end_time: '' },friday: { start_time: '', end_time: '' },saturday: { start_time: '', end_time: '' },});
   const [showModal, setShowModal] = useState(false);
@@ -28,12 +28,11 @@ const Meetings = () => {
   };
 
   return (
-    <div className='flex gap-60'>
+    <div className='flex gap-40'>
       <div className="text-lg text-gray-800 font-medium leading-9 max-w-2xl ml-20">
         <h2 className="text-3xl text-gray-800 font-medium leading-9">Set your availability</h2>
         <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mb-5 mt-3"></div>
-        <div>
-          <label className="text-xl text-secondary font-semibold">Available hours:</label>
+        <div className='mt-10'>
           {Object.keys(availability).map((day) => (
             <div key={day} className="mb-4 flex items-center">
               <p className="w-32">{day.charAt(0).toUpperCase() + day.slice(1)}:</p>
@@ -64,11 +63,11 @@ const Meetings = () => {
       <div>
         <h2 className="text-3xl text-gray-800 font-medium leading-9">Your Meetings</h2>
         <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mb-5 mt-3"></div>
-        <Meeting />
+        <Meetings />
       </div>
       {showModal && (<Modal message="Available Time Set Successfuly" onClose={closeModal} />)}
     </div>
   );
 };
 
-export default Meetings;
+export default Schedule;
