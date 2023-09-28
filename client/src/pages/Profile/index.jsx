@@ -81,11 +81,7 @@ function Profile() {
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                const response = await sendRequest({
-                    method: 'GET',
-                    route: 'user/profile',
-                });
-
+                const response = await sendRequest({method: 'GET',route: 'user/profile',});
                 if (response.status === 'Success' && response.authenticated) {
                     setOriginalUser(response.user); 
                     setUser(response.user);
@@ -108,10 +104,10 @@ function Profile() {
           <h2 className="text-3xl text-gray-800 font-medium leading-9">Your Profile Info</h2>
           <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mb-5 mt-3"></div>
         </div>
-        <div className='flex flex-row-reverse w-full'>
-          <div className='mr-20'> <img src={Broker}></img> 
+        <div className='flex flex-row-reverse justify-end gap-20'>
+          <div className='hidden lg:block m-5'> <img src={Broker}></img> 
           </div> 
-          <div className="container mx-auto ml-20 max-w-lg">
+          <div className="container ml-20 max-w-lg">
               <div className="mb-4">
                   <label className="block mb-2">Name</label>
                   <input type="text" name="name" value={user.name} onChange={handleInputChange} disabled={!editable} className="w-full rounded-md p-3 border border-gray-300"/>
