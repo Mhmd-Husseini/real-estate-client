@@ -2,6 +2,9 @@
   "name": "admin-electron",
   "version": "0.1.0",
   "private": true,
+  "electron": "26.2.3",
+  "description": "Lebanon RealEstate Insights",
+  "author": "Mohammad Husseini",
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -19,7 +22,7 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "main": "public/main.js",
+  "main": "public/electron.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -47,6 +50,31 @@
     ]
   },
   "devDependencies": {
+    "electron": "^26.2.3",
+    "electron-builder": "^24.6.4",
     "tailwindcss": "^3.3.3"
+  },
+  "build": {
+    "appId": "com.example.myapp",
+    "productName": "MyApp",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "public/**/*",
+      "main.js",
+      "package.json"
+    ],
+    "asar": true,
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "deb"
+    }
   }
 }
