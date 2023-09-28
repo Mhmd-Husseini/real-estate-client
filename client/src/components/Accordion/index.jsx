@@ -8,7 +8,7 @@ const Accordion = ({ title, children }) => {
   };
 
   return (
-    <div className="mb-4 w-[25rem]">
+    <div className="mb-4 md:w-[25rem] w-[20rem]">
       <div
         className="flex justify-between items-center bg-gray-100 p-3 cursor-pointer" onClick={toggleAccordion}>
         <h3 className="text-lg font-semibold text-gray-700">{title}</h3>
