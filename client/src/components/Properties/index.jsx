@@ -22,11 +22,7 @@ const Properties = ({type}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await sendRequest({
-          method: "GET",
-          route: "guest/properties",
-          params: { ...searchParams, page }
-        });
+        const response = await sendRequest({method: "GET",route: "guest/properties",params: { ...searchParams, page }});
         if (response.data.length === 0) {
           setHasMoreItems(false); 
         }
@@ -49,11 +45,11 @@ const Properties = ({type}) => {
   return (
     <div className='mx-auto max-w-screen-xl'>
       <div className='flex mt-12 items-end'>
-        <div className='grow h-1 bg-gradient-to-r from-primary to-black mb-7'></div>
+        <div className='grow ml-7 h-1 bg-gradient-to-r from-primary to-black mb-7'></div>
         <ButtonSearch />
-        <div className='grow h-1 bg-gradient-to-r from-black to-primary mb-7'></div>
+        <div className='grow h-1 mr-7 bg-gradient-to-r from-black to-primary mb-7'></div>
       </div>
-      <div className='flex justify-center gap-20 m-8'>
+      <div className='flex flex-col md:flex-row justify-center md:gap-20 gap-4 items-center mt-5 md:m-8'>
         <SearchDropDown placeholder="City" options={regionOptions} onChange={(selectedOption) => setSearchParams({ ...searchParams, city_name: selectedOption }) }/>
         <SearchDropDown placeholder="Min Area" options={minArea} onChange={(selectedOption) => setSearchParams({ ...searchParams, min_area: selectedOption })}/>
         <SearchDropDown placeholder="Max Price" options={maxprice} onChange={(selectedOption) => setSearchParams({ ...searchParams, max_price: selectedOption })}/>
