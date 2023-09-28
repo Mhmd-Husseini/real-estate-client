@@ -7,7 +7,7 @@
 
 > A website app that serves as a real estate market, making it easier for sellers, buyers and anyone interested in real estate investement to buy, sell and get insights to the Lebanese market.
 >
-> In additon to a desktop app designed to give administrators full control over the website and provide in-depth analytics. 
+> In addition to the website, a desktop app is designed to give administrators full control over the website and provide in-depth analytics. 
 >
 > Lebanon RealEstate Insights is your gateway to the Lebanese real estate market. Whether you're looking to buy your dream property, sell your current one, or gain valuable insights into the market trends, we've got you covered. 
 
@@ -126,11 +126,12 @@ _Follow these steps to set up the Lebanon Real Estate Insights website (React fr
    ```
 5. Start the Website App:
    - Start the Laravel backend server (in the server-laravel directory):
-     ```sh
-     php artisan serve
+   ```sh
+   php artisan serve
      ```
    - Start the Vite development server for the frontend (in the client directory):
-     ```sh
-     npm start
+   ```sh
+   npm start
      ```
+<br><br>
 Now, you should be able to run the website locally and explore its features.
