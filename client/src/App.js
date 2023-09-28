@@ -12,7 +12,7 @@ import Profile from './pages/Profile';
 import AddProperty from './pages/AddProperty';
 import UserProperties from './pages/UserProperties';
 import GoogleCallback from "./pages/GoogleCallback";
-import Meetings from './pages/Meetings';
+import Schedule from './pages/Schedule';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
           <Route index element={<Profile />} />
           <Route path='add' element={<AddProperty />} />
           <Route path='properties' element={<UserProperties />} />
-          <Route path='meetings' element={<Meetings />} />
+          <Route path='meetings' element={<Schedule />} />
         </Route>
       </Route>
     </Routes>
