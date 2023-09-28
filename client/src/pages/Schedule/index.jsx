@@ -28,8 +28,8 @@ const Schedule = () => {
   };
 
   return (
-    <div className='flex gap-40'>
-      <div className="text-lg text-gray-800 font-medium leading-9 max-w-2xl ml-20">
+    <div className='md:flex md:gap-40'>
+      <div className="text-lg text-gray-800 font-medium leading-9 max-w-2xl md:ml-20">
         <h2 className="text-3xl text-gray-800 font-medium leading-9">Set your availability</h2>
         <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mb-5 mt-3"></div>
         <div className='mt-10'>
@@ -60,7 +60,7 @@ const Schedule = () => {
           <ButtonSm onClick={handleSubmit} buttonText="Save" />
         </div>
       </div>
-      <div>
+      <div className='mt-10 md:mt-0'>
         <h2 className="text-3xl text-gray-800 font-medium leading-9">Your Meetings</h2>
         <div className="w-36 h-1.5 bg-gradient-to-r from-primary to-black mb-5 mt-3"></div>
         <Meetings />
