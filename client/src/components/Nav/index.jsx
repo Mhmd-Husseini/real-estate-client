@@ -3,6 +3,7 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import logo from '../../logo.svg';
 import ButtonSm from '../ButtonSm';
 import NavLink from '../NavLink';
+import { sendRequest } from '../../config/request';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -12,6 +13,16 @@ const Nav = () => {
 
   const handleSignInClick = () => {
     navigate('/auth');
+  };
+
+  const handleLogout = async () => {
+    try {
+      await sendRequest({method: "POST",route: "user/logout", includeHeaders: true});
+        localStorage.removeItem("token");
+        navigate("/auth");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
 
   useEffect(() => {
@@ -61,7 +72,7 @@ const Nav = () => {
             </svg>
           </button>
         </div>
-        <ButtonSm buttonText="Sign In" onClick={handleSignInClick} />
+        <ButtonSm buttonText={authenticated?"Logout":"Sign In"} onClick={authenticated? handleLogout: handleSignInClick} />
       </div>
       {isMobileMenuOpen && (
         <div className="md:hidden">
