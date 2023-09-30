@@ -40,7 +40,7 @@ const Login = ( ) => {
         <div>
             <h2 className="mt-6 mb-1 text-3xl font-extrabold text-secondary">
             <div className="text-center mb-5">Admin Panel</div>
-            <div>Lebanon RealEstate Insights</div>
+            <div>Lebanon Real Estate Insights</div>
             </h2>
             <div className='w-36 h-1.5 bg-gradient-to-r from-primary to-black'></div>
         </div>

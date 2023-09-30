@@ -9,7 +9,7 @@
 >
 > In addition to the website, a desktop app is designed to give administrators full control over the website and provide in-depth analytics. 
 >
-> Lebanon RealEstate Insights is your gateway to the Lebanese real estate market. Whether you're looking to buy your dream property, sell your current one, or gain valuable insights into the market trends, we've got you covered. 
+> Lebanon Real Estate Insights is your gateway to the Lebanese real estate market. Whether you're looking to buy your dream property, sell your current one, or gain valuable insights into the market trends, we've got you covered. 
 
 ### User Stories
 - As a user, I want to signup and signin with my google account, so I can easily register and access the website's features.
@@ -24,7 +24,7 @@
 <!-- Prototyping -->
 <img src="./readme/title3.svg"/>
 
-> We designed Lebanon RealEstate Insights using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
+> We designed Lebanon Real Estate Insights using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
 
 ### Wireframes
 | Landing Page  | Landing Page |  Properties Page |
@@ -41,7 +41,7 @@
 <!-- Implementation -->
 <img src="./readme/title4.svg"/>
 
-> Using the wireframes and mockups as a guide, we implemented the Lebanon RealEstate Insights website with the following features:
+> Using the wireframes and mockups as a guide, we implemented the Lebanon Real Estate Insights website with the following features:
 
 ### User Screens (Web)
 | Landing screen  | Properties screen |  Property screen |
@@ -62,7 +62,7 @@
 <!-- Tech stack -->
 <img src="./readme/title5.svg"/>
 
-###  Lebanon RealEstate Insights is built using the following technologies:
+###  Lebanon Real Estate Insights is built using the following technologies:
 
 - This project uses the [React Javascript Library](https://react.dev/). 
 React is a free and open-source front-end JavaScript library for building user interfaces based on components. It is used to design frontend for apps on mobile, desktop, and the web.
@@ -76,7 +76,7 @@ React is a free and open-source front-end JavaScript library for building user i
 <!-- How to run -->
 <img src="./readme/title6.svg"/>
 
-> To set up Lebanon RealEstate Insights Website locally, follow these steps:
+> To set up Lebanon Real Estate Insights Website locally, follow these steps:
 
 ### Prerequisites
 

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "electron": "26.2.3",
-  "description": "Lebanon RealEstate Insights",
+  "description": "Lebanon Real Estate Insights",
   "author": "Mohammad Husseini",
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.4.2",

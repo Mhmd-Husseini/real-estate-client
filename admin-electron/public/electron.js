@@ -4,7 +4,7 @@ function createWindow () {
   const win = new BrowserWindow({
     width: 1300,
     height: 900,
-    title: 'Lebanon RealEstate Insights',
+    title: 'Lebanon Real Estate Insights',
     webPreferences: {
       nodeIntegration: true
     }
