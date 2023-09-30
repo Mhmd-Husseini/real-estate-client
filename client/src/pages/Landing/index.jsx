@@ -17,14 +17,14 @@ const Landing = () => {
                 <div className='w-36 h-2 bg-gradient-to-r from-primary to-black'>
                 </div>
                  <h1 className=' font-semibold text-4xl mb-1'>
-                     Lebanon RealEstate Insights
+                     Lebanon Real Estate Insights
                 </h1>
                 <p className='md:mb-10 mb-5 text-xl font-medium text-justify leading-8 text-gray-500'>
                         Your gateway to the Lebanese real estate market. Whether you're looking to buy your dream property, sell your current one, 
                         or gain valuable insights into the market trends, we've got you covered. Our group offers a vast selection of properties, 
-                        expert guidance, and a secure environment. Join our community of satisfied users and explore the endless possibilities 
-                        that the Lebanese real estate market has to offer. Get started now and embark on your real estate journey through the  
-                        boundless opportunities with limitless confidence. 
+                        expert guidance, and a secure environment. We understand that buying or selling a property is more than a transaction; 
+                        it's about realizing dreams and securing investments. Join our community of satisfied users and explore the endless
+                         possibilities that the Lebanese real estate market has to offer.  
                 </p>
                 <ButtonLg buttonText='Sign Up' onClick={handleSignInClick}/>
             </div>
