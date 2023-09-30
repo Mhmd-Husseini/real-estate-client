@@ -131,7 +131,7 @@ _Follow these steps to set up the Lebanon Real Estate Insights website (React fr
    ```sh
    php artisan serve
      ```
-   - Start the Vite development server for the frontend (in the client directory):
+   - Start the React development server for the frontend (in the client directory):
    ```sh
    npm start
      ```
