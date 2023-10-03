@@ -22,6 +22,8 @@ const Nav = () => {
         navigate("/auth");
     } catch (error) {
       console.error("Logout failed:", error);
+      localStorage.removeItem("token");
+      navigate("/auth");
     }
   };
 

@@ -27,7 +27,7 @@ const Regions = () => {
 
       setVisibleRegions([currentIndex, currentIndex + 1, currentIndex + 2]);
       setActiveRoundedDiv(currentIndex / 3);
-    }, 7000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
