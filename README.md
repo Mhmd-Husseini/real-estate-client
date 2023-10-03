@@ -71,7 +71,7 @@
 - This project uses the [React Javascript Library](https://react.dev/). 
 React is a free and open-source front-end JavaScript library for building user interfaces based on components. It is used to design frontend for apps on mobile, desktop, and the web.
 - For persistent data storage (database), the website and admin desktop application use [MySQL](https://www.mysql.com/) to create a structured database schema for efficiently storing and retrieving information related to properties, users, and other data.
-- This project uses [Laravel](https://laravel.com), a robust PHP web application framework, as a central component of its architecture. Laravel plays a pivotal role in the project, primarily focusing on the development of robust and secure APIs (Application Programming Interfaces). 
+- This project uses [Laravel](https://laravel.com), a robust PHP web application framework, as a central component of its architecture. Laravel plays a pivotal role in the project, primarily focusing on the development of robust and secure APIs (Application Programming Interfaces). The github link for the project's backend: https://github.com/Mhmd-Husseini/real-estate-server.git
 - This project also uses the [Node.js](https://nodejs.org/en) for building the backend of the admin desktop application. Node.js is an open-source, server-side JavaScript runtime environment that allows for efficient server-side scripting and the development of network applications.
 - For the desktop application's frontend, [Electron](https://www.electronjs.org/) is utilized to create a structured database schema for efficiently storing and retrieving information related to properties, users, and other data.
 
@@ -98,7 +98,7 @@ _Follow these steps to set up the Lebanon Real Estate Insights website (React fr
 2. Frontend Setup:
    - Clone this repo
    ```sh
-   git clone https://github.com/Mhmd-Husseini/real-estate-website-frontend.git
+   git clone https://github.com/Mhmd-Husseini/real-estate-client.git
    ```
    - Install NPM packages
    ```sh
@@ -107,7 +107,7 @@ _Follow these steps to set up the Lebanon Real Estate Insights website (React fr
 3. Backend Setup:
    - Clone the backend repo
    ```sh
-   git clone https://github.com/Mhmd-Husseini/real-estate-website-backend.git
+   git clone https://github.com/Mhmd-Husseini/real-estate-server.git
    ```
    - Install composer packages
    ```sh
