@@ -44,9 +44,19 @@
 > Using the wireframes and mockups as a guide, we implemented the Lebanon Real Estate Insights website with the following features:
 
 ### Demo (Web)
-| Landing screen  | Properties screen |  
-| ---| ---| 
-| ![Landing](./readme/demo/web-pages/landing.gif) | ![Properties](./readme/demo/web-pages/property.gif) 
+| Landing screen  | 
+| ---| 
+| ![Landing](./readme/demo/web-pages/landing.gif) | 
+
+| Properties screen |  
+| ---|
+| ![Properties](./readme/demo/web-pages/property.gif) | 
+
+| Dashboard screen |  
+| ---|
+| ![Dashboard](./readme/demo/web-pages/dashboard.gif) | 
+
+<br>
 
 ### User Screens (Web)
 | Landing screen  | Properties screen |  Property screen |
