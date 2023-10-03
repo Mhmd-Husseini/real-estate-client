@@ -4,9 +4,8 @@
 
 <img src="./readme/title7.svg"/> 
 
-
 - [Project Description](#project-description)
-- [User Types](#user-stories)
+- [User Types](#user-Types)
 - [Features of the App](#features-of-the-app)
 - [Prototyping](#prototyping)
 - [Demo](#Demo)
@@ -27,8 +26,10 @@
 >
 > Lebanon Real Estate Insights is your gateway to the Lebanese real estate market. Whether you're looking to buy your dream property, sell your current one, or gain valuable insights into the market trends, we've got you covered. 
 
+<a name="user-Types"></a>
 ### User Types
-1- Admin
+1- Admin 
+<br>
 2- General User
 
 ### Features of the App
@@ -112,6 +113,7 @@ React is a free and open-source front-end JavaScript library for building user i
 <br><br>
 
 <!-- How to run -->
+<a name="how-to-run"></a>
 <img src="./readme/title6.svg"/>
 
 > To set up Lebanon Real Estate Insights Website locally, follow these steps:
