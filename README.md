@@ -2,7 +2,23 @@
 
 <br><br>
 
-<!-- project philosophy -->
+<img src="./readme/title7.svg"/> 
+
+
+- [Project Description](#project-description)
+- [User Types](#user-stories)
+- [Features of the App](#features-of-the-app)
+- [Prototyping](#prototyping)
+- [Demo](#Demo)
+- [Tech Stack](#tech-stack)
+- [How to Run](#how-to-run)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+
+<br><br>
+
+<!-- Project Description -->
+<a name="project-description"></a>
 <img src="./readme/title2.svg"/>
 
 > A website app that serves as a real estate market, making it easier for sellers, buyers and anyone interested in real estate investement to buy, sell and get insights to the Lebanese market.
@@ -11,13 +27,20 @@
 >
 > Lebanon Real Estate Insights is your gateway to the Lebanese real estate market. Whether you're looking to buy your dream property, sell your current one, or gain valuable insights into the market trends, we've got you covered. 
 
-### User Stories
-- As a user, I want to signup and signin with my google account, so I can easily register and access the website's features.
-- As a user, I want to browse property listings with the ability to customize my property search criteria, such as location, price, and property type, so I can narrow down my options to the most suitable properties.
-- As a user, I want to post my property on the website and customize the listing details, including property features and photos, to attract potential buyers and showcase my property effectively.
-- As a user, I want access to comprehensive market data, including historical price trends, articles, so I get insights to investment in Lebanon.
-- As a user, I want the to schedule meetings with sellers or buyers, allowing them to schedule meetings with me.
-- As an admin, I want to browse website data and also access comprehensive analytics, so I can manage the website efficiently.
+### User Types
+1- Admin
+2- General User
+
+### Features of the App
+As a user, I want to: 
+- Signup and signin with my google account, so I can easily register and access the website's features.
+- Browse property listings with the ability to customize my property search criteria, such as location, price, and property type, so I can narrow down my options to the most suitable properties.
+- Post my property on the website and customize the listing details, including property features and photos, to attract potential buyers and showcase my property effectively.
+- Access to comprehensive market data, including historical price trends, articles, so I get insights to investment in Lebanon.
+- Schedule meetings with sellers or buyers, allowing them to schedule meetings with me.
+
+As an admin, I want to:
+- Browse website data and also access comprehensive analytics, so I can manage the website efficiently.
 
 <br><br>
 
@@ -38,12 +61,13 @@
 
 <br><br>
 
-<!-- Implementation -->
+<!-- Demo -->
+<a name="Demo"></a>
 <img src="./readme/title4.svg"/>
 
 > Using the wireframes and mockups as a guide, we implemented the Lebanon Real Estate Insights website with the following features:
 
-### Demo (Web)
+### User Screens (Web)
 | Landing screen  | 
 | ---| 
 | ![Landing](./readme/demo/web-pages/landing.gif) | 
@@ -58,7 +82,6 @@
 
 <br>
 
-### User Screens (Web)
 | Landing screen  | Properties screen |  Property screen |
 | ---| ---| ---|
 | ![Landing](./readme/demo/web-pages/landing.png) | ![Properties](./readme/demo/web-pages/properties.png) | ![Property](./readme/demo/web-pages/property.png) |
@@ -74,6 +97,7 @@
 <br><br>
 
 <!-- Tech stack -->
+<a name="tech-stack" ></a>
 <img src="./readme/title5.svg"/>
 
 ###  Lebanon Real Estate Insights is built using the following technologies:
