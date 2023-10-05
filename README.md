@@ -13,7 +13,9 @@
 - [How to Run](#how-to-run)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+<br><br>
 
+<b>Note that the github link for the project's backend is: https://github.com/Mhmd-Husseini/real-estate-server.git </b>
 <br><br>
 
 <!-- Project Description -->
